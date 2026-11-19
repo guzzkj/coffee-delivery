@@ -302,7 +302,9 @@ Com carrinho vazio o checkout mostra `EmptyCart`, então a taxa de entrega nunca
 
 ## 11. Tema, tokens, breakpoints e acessibilidade
 
-### 11.1 Tokens (`styles/themes/light.ts` e `dark.ts`) — **todos a confirmar no Style Guide do Figma**
+### 11.1 Tokens (`styles/themes/light.ts` e `dark.ts`)
+
+> **Tema claro confirmado** no Style Guide do Figma (`docs/REF_DESIGN/Cores.png`): produto `yellow-dark #C47F17`, `yellow #DBAC2C`, `yellow-light #F1E9C9`, `purple-dark #4B2995`, `purple #8047F8`, `purple-light #EBE5F9`; base `title #272221`, `subtitle #403937`, `text #574F4D`, `label #8D8686`, `hover #D7D5D5`, `button #E6E5E5`, `input #EDEDED`, `card #F3F2F2`, `background #FAFAFA`, `white #FFFFFF`. O tema escuro não existe no Figma; os valores abaixo são proposta própria, validar contraste WCAG AA na T-33.
 
 | Token semântico | Claro | Escuro |
 |---|---|---|
@@ -321,7 +323,22 @@ Com carrinho vazio o checkout mostra `EmptyCart`, então a taxa de entrega nunca
 
 Os dois temas têm **as mesmas chaves**; `styled.d.ts` declara o `DefaultTheme` a partir de `typeof light`, então `props.theme.colors.*` tem autocompletar e nenhum `any`.
 
-Tipografia: Baloo 2 (700/800) para títulos; Roboto (400/700) para textos. Escala conforme Style Guide.
+Tipografia (Style Guide, `docs/REF_DESIGN/Tipografia.png`), line-height 130% salvo indicação:
+
+| Token | Fonte | Tamanho | Peso |
+|---|---|---|---|
+| `title-xl` / `title-l` / `title-m` | Baloo 2 | 48 / 32 / 24 px | 800 |
+| `title-s` / `title-xs` | Baloo 2 | 20 / 18 px | 700 |
+| `text-l` / `text-m` | Roboto | 20 / 16 px | 400 e 700 |
+| `text-s` | Roboto | 14 px | 400 |
+| `text-xs` | Roboto | 12 px | 700 |
+| `tag` | Roboto | 10 px | 700 (uppercase) |
+| `button-g` | Roboto | 14 px, lh 160% | 700 (uppercase) |
+| `button-m` | Roboto | 12 px, lh 160% | 400 (uppercase) |
+
+Ícones (`docs/REF_DESIGN/Ícones.png`, Phosphor): MapPin (fill/regular), Trash, CurrencyDollar, ShoppingCart (fill), Timer (fill), Package (fill), Coffee (fill), Plus, Minus, CreditCard, Money, Bank.
+
+Estados dos componentes (`docs/REF_DESIGN/Componentes.png`): botão primário `yellow` → hover `yellow-dark`; secundário "Remover" `button` → hover `hover`; botão ícone do card `purple-dark` → hover `purple`; carrinho do Header `yellow-light` com badge `yellow-dark`; select de pagamento `button` → hover `hover` → selecionado `purple-light` + borda `purple`; input `input` com borda `button`, foco borda `yellow-dark`, sufixo "Opcional" em itálico `label`; QuantityInput `button` com ícones `purple` → hover `purple-dark`.
 
 ### 11.2 Breakpoints
 
