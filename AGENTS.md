@@ -14,6 +14,7 @@
 - **Figma:** https://www.figma.com/design/7mC5Yp1OIdLSWEKyHJJebu/Coffee-Delivery-%E2%80%A2-Projeto-Final-React--Copy- (cópia do Gustavo; original: https://www.figma.com/design/yGPNTA0Yczb183EikXGIiA/Coffee-Delivery-%E2%80%A2-Projeto-Final-React?node-id=2-1297) — frames Home, Checkout, Checkout Filled e Success.
 - **Enunciado (Notion):** https://app.notion.com/p/41bdfca74d8d8119a849e30ea492a6af — entrega no Blackboard: link do repositório público + link da aplicação publicada.
 - **Board / plano:** `docs/TASKS_SPEC.md` (fonte de verdade das tasks).
+- **Projeto de referência:** https://github.com/Devpaulo1/coffee-delivery — consultar para organização e decisões; **nunca copiar texto ou código literalmente**. Divergências conscientes em `docs/TECH_SPEC.md` §14 (ex.: usamos `react-router`, não `react-router-dom`; Zod 4 com `error`, não `errorMap`).
 - **Stack:** React 19 + **Vite 8** + **TypeScript** (template `react-ts`, `.tsx`) + `react-router` + Context API + `useReducer` + React Hook Form + Zod (`@hookform/resolvers`) + **styled-components** (D-02) + `@phosphor-icons/react` + Vitest/Testing Library/jsdom. Gerenciador: **npm**.
 - **Escopo:** RF-01..RF-16 e RN-01..RN-10 de `docs/PRD_SPEC.md`. **Fora do escopo:** backend, auth, banco, pagamento real, frete por distância.
 - **Componentes previstos:** PageLayout, Header, ThemeToggle, CartBadge, Hero, CoffeeCatalog, CoffeeCard, QuantityInput, CartItem, CartSummary, EmptyCart, DeliveryAddressForm, PaymentMethodSelector, OrderSuccess.
@@ -23,10 +24,11 @@
 1. **Ler os SPECs antes de codar:** `docs/PRD_SPEC.md` (o quê), `docs/TECH_SPEC.md` (como), `docs/TASKS_SPEC.md` (ordem). Trabalhar **uma task `T-xx` por vez**, na ordem; ao terminar, atualizar o status e o registro de execução no TASKS_SPEC.
 2. **TypeScript sempre** (`.ts`/`.tsx`), modo estrito, **sem `any`**. Tipos compartilhados em `src/types/`.
 3. **Bibliotecas liberadas para este projeto** (exigidas pelo enunciado, ampliam a lista da seção 1.7): `react-router`, `react-hook-form`, `zod`, `@hookform/resolvers`, `styled-components`, `@phosphor-icons/react`, `vitest`, `@testing-library/react`, `@testing-library/user-event`, `@testing-library/jest-dom`, `jsdom`. Qualquer outra: **perguntar antes**.
-4. **Estado do carrinho:** só via `cartReducer` (ações `ADD_ITEM`, `INCREMENT_ITEM`, `DECREMENT_ITEM`, `REMOVE_ITEM`, `CLEAR_CART`). Nunca mutar estado. Totais e contador são **derivados**, nunca guardados em state.
+4. **Estado do carrinho:** só via `cartReducer` (estado `{ items, confirmedOrder }`; ações `ADD_ITEM`, `INCREMENT_ITEM`, `DECREMENT_ITEM` (só se quantidade > 1), `REMOVE_ITEM`, `CONFIRM_ORDER`, `CLEAR_CART`). Item guarda só `coffeeId + quantity`. Nunca mutar estado. Totais e contador são **derivados**, nunca guardados em state.
+4.1. **Estrutura:** uma pasta por componente (`src/components/<Nome>/index.tsx` + `styles.ts`) e por página (`src/pages/<Nome>/`); temas em `src/styles/themes/light.ts` e `dark.ts`. Chaves do `localStorage` versionadas: `@coffee-delivery:cart-1.0.0`, `@coffee-delivery:last-order-1.0.0`, `@coffee-delivery:theme-1.0.0`.
 5. **Dinheiro em centavos** (inteiros); formatar em BRL só na exibição. Taxa de entrega em **uma** constante (`src/utils/`).
 6. **`App.tsx` só declara rotas** (`/`, `/checkout`, `/success`, `*`). Lógica em contexts, reducers, hooks, utils, services.
-7. **CEP:** consulta em `src/services/` (ViaCEP — D-05), com loading, inválido, não encontrado e indisponível tratados.
+7. **CEP:** consulta em `src/services/viaCep.ts` (ViaCEP — D-05) usada pelo hook `useCepLookup` (sanitiza `\D`, busca ao chegar a 8 dígitos, preenche via `setValue`), com loading, inválido, não encontrado e indisponível tratados; campos editáveis após erro.
 8. **Tema:** tokens semânticos claro/escuro; nada de cor hex espalhada nos componentes.
 9. **Acessibilidade WCAG 2.2 AA** e responsividade em 320, 375/390, 768, 1280/1440 (validar com Playwright).
 10. **Testes:** `npm run test -- --run` e `npm run build` verdes antes de cada commit que toque lógica; Playwright antes de concluir task com UI.

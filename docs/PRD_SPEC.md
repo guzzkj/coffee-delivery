@@ -2,6 +2,7 @@
 
 > Status: **v1.0 — validado pelo Gustavo em 2026-11-19.** Decisões registradas na seção 10 (só D-07 segue pendente, decidida na T-07).
 > Projeto Final 05 — Single Page Application (Senac). Projeto acadêmico, sem cobrança.
+> **v1.1:** alinhado ao projeto de referência https://github.com/Devpaulo1/coffee-delivery (decisões D-14..D-17). Texto próprio; divergências em `docs/TECH_SPEC.md` §14.
 
 ---
 
@@ -108,7 +109,7 @@
 
 | Categoria | Requisito |
 |---|---|
-| Acessibilidade | WCAG 2.2 AA: contraste ≥ 4.5:1 (texto), foco visível, labels em todos os campos, erros com texto (não só cor), `aria-invalid`/`aria-describedby`, `aria-live` para status do CEP, botões de ícone com `aria-label`, alvos de toque ≥ 24×24 px (ideal 44×44) |
+| Acessibilidade | WCAG 2.2 AA: contraste ≥ 4.5:1 (texto), foco visível, labels em todos os campos, erros com texto (não só cor) e `role="alert"`, `aria-invalid`/`aria-describedby`, `aria-live` para status do CEP, botões de ícone com `aria-label`, pagamento como grupo de rádio (`fieldset` + `legend`), **alvos de toque ≥ 44×44 px** |
 | Responsividade | Testado em 320, 375/390, 768, 1280/1440 px; sem scroll horizontal; checkout em coluna única no mobile |
 | Desempenho | Imagens dos cafés otimizadas (SVG/PNG pequenos); build de produção sem warnings relevantes |
 | Persistência | Carrinho, tema e último pedido em `localStorage` com `try/catch` e fallback seguro |
@@ -152,5 +153,9 @@
 | D-11 | Ícones: `@phosphor-icons/react` (os mesmos do Figma) | Decidido |
 | D-12 | Testes: Vitest + Testing Library + jsdom | Decidido |
 | D-13 | Repositório GitHub público `coffee-delivery` | Decidido |
+| D-14 | Projeto de referência: https://github.com/Devpaulo1/coffee-delivery (estrutura uma-pasta-por-componente, ações do reducer, fluxo do CEP, tokens iniciais) — adaptado, não copiado | Decidido |
+| D-15 | Item do carrinho guarda só `coffeeId + quantity` (diverge da referência; catálogo é a fonte única — RN-10) | Decidido |
+| D-16 | Chaves versionadas no `localStorage`: `@coffee-delivery:cart-1.0.0`, `@coffee-delivery:last-order-1.0.0`, `@coffee-delivery:theme-1.0.0` | Decidido |
+| D-17 | Formas de pagamento no código: `'credit' \| 'debit' \| 'money'`; pedido confirmado via ação `CONFIRM_ORDER` (guarda snapshot e esvazia o carrinho) | Decidido |
 
 Figma conferido (cópia do Gustavo, 2026-11-19): Home, Checkout, Checkout preenchido e Sucesso batem com a referência — 14 cafés a R$ 9,90, entrega R$ 3,50, total R$ 33,20 para R$ 29,70 em itens, "− 1 +" + Remover no carrinho, sucesso com endereço / 20–30 min / pagamento. Hex exatos e Style Guide ainda a confirmar; imagens serão exportadas pelo Gustavo.

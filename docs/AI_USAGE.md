@@ -23,6 +23,18 @@ Ferramentas:
 | Decisão do Gustavo | Validou os SPECs. Escolheu styled-components, "−" travado em 1 no carrinho (remoção só por "Remover"), ícones Phosphor, Testing Library + jsdom, repositório público `coffee-delivery`; manteve nome Coffee Delivery, taxa fixa R$ 3,50, ViaCEP e Vercel. Ferramenta da logo fica para a T-07. Conferiu o Figma pelo navegador. |
 | Evidência | `docs/PRD_SPEC.md`, `docs/TECH_SPEC.md`, `docs/TASKS_SPEC.md` (versão v0.1) |
 
+## Interação 01b — Alinhamento com o projeto de referência
+
+| Campo | Registro |
+|---|---|
+| Data | 2026-11-19 |
+| Ferramenta | Claude Code |
+| Projeto de referência | https://github.com/Devpaulo1/coffee-delivery (boilerplate Vite 8 + documentação; sem código de app) |
+| Objetivo | Comparar as decisões dos nossos SPECs com o projeto de referência indicado pelo Gustavo e adotar o que melhora a organização, sem copiar texto |
+| Resposta (resumo) | Muitas decisões já coincidiam (centavos, taxa 350, "−" travado em 1, ViaCEP, styled-components, RHF + Zod, Vitest + RTL, snapshot do pedido, fallback `prefers-color-scheme`). Adotados: uma pasta por componente, temas em `light.ts`/`dark.ts`, chaves versionadas no `localStorage`, ação `CONFIRM_ORDER`, fluxo do `useCepLookup` (sanitiza, busca com 8 dígitos, `setValue`), tokens iniciais, alvos de toque ≥ 44 px, matriz de rastreabilidade. Não adotados: `react-router-dom`, sintaxe `errorMap` do Zod 3 e o item de carrinho com o café inteiro. |
+| Decisão do Gustavo | Pediu o alinhamento; registrado como D-14..D-17 no PRD e divergências no TECH_SPEC §14 |
+| Evidência | Commit `docs: align specs with reference project`; `docs/TECH_SPEC.md` §13–14 |
+
 ## Interação 02 — Branding com IA (logo)
 
 | Campo | Registro |
