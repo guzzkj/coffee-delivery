@@ -1,7 +1,20 @@
 import { CurrencyDollar, MapPinLine } from '@phosphor-icons/react'
-import { Card, CardHeader, CheckoutForm, Column, SummaryCard } from './styles'
+import { CartItem } from '../../components/CartItem'
+import { CartSummary } from '../../components/CartSummary'
+import { useCart } from '../../hooks/useCart'
+import { Card, CardHeader, CartList, CheckoutForm, Column, SummaryCard } from './styles'
 
 export function Checkout() {
+  const {
+    items,
+    subtotalInCents,
+    deliveryFeeInCents,
+    totalInCents,
+    incrementItem,
+    decrementItem,
+    removeItem,
+  } = useCart()
+
   return (
     <CheckoutForm noValidate>
       <Column aria-labelledby="checkout-title">
@@ -30,7 +43,25 @@ export function Checkout() {
 
       <Column aria-labelledby="selected-title">
         <h2 id="selected-title">Cafés selecionados</h2>
-        <SummaryCard />
+        <SummaryCard>
+          <CartList>
+            {items.map((item) => (
+              <CartItem
+                key={item.coffeeId}
+                item={item}
+                onIncrement={incrementItem}
+                onDecrement={decrementItem}
+                onRemove={removeItem}
+              />
+            ))}
+          </CartList>
+
+          <CartSummary
+            subtotalInCents={subtotalInCents}
+            deliveryFeeInCents={deliveryFeeInCents}
+            totalInCents={totalInCents}
+          />
+        </SummaryCard>
       </Column>
     </CheckoutForm>
   )

@@ -36,6 +36,13 @@ export const SummaryCard = styled(Card)`
   border-radius: 6px 44px;
 `
 
+export const CartList = styled.ul`
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+`
+
 type CardHeaderProps = {
   $iconColor: 'yellowDark' | 'purple'
 }
