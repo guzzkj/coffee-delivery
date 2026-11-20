@@ -7,5 +7,7 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
     setupFiles: ['./src/tests/setup.ts'],
+    // fluxos completos digitam muitos campos; 5s (padrão) fica curto em máquinas lentas
+    testTimeout: 15000,
   },
 })
