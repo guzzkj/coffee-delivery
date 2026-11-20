@@ -8,6 +8,7 @@ import {
   removeItem as removeItemAction,
 } from '../reducers/cartActions'
 import { cartReducer, initialCartState } from '../reducers/cartReducer'
+import { calculateSubtotal, calculateTotal, DELIVERY_FEE_IN_CENTS } from '../utils/cartCalculations'
 import { CartContext, type CartContextValue } from './CartContextValue'
 
 type CartProviderProps = {
@@ -27,9 +28,16 @@ export function CartProvider({ children }: CartProviderProps) {
   // RF-04: soma das unidades, não a quantidade de tipos de café
   const totalUnits = items.reduce((total, item) => total + item.quantity, 0)
 
+  // RF-10: valores financeiros também são derivados, nunca guardados em state
+  const subtotalInCents = calculateSubtotal(items)
+  const totalInCents = calculateTotal(subtotalInCents)
+
   const value: CartContextValue = {
     items,
     totalUnits,
+    subtotalInCents,
+    deliveryFeeInCents: DELIVERY_FEE_IN_CENTS,
+    totalInCents,
     confirmedOrder: state.confirmedOrder,
     addItem: (coffeeId, quantity) => dispatch(addItemAction(coffeeId, quantity)),
     incrementItem: (coffeeId) => dispatch(incrementItemAction(coffeeId)),

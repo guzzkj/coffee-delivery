@@ -7,6 +7,9 @@ import type { Order } from '../types/order'
 export type CartContextValue = {
   items: CartItemDetailed[]
   totalUnits: number
+  subtotalInCents: number
+  deliveryFeeInCents: number
+  totalInCents: number
   confirmedOrder: Order | null
   addItem: (coffeeId: string, quantity: number) => void
   incrementItem: (coffeeId: string) => void

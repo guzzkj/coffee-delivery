@@ -50,7 +50,7 @@
 | T-16 | `CartContext` + `CartProvider` + `useCart` | RF-03 | `contexts/CartContext.tsx`, `hooks/useCart.ts`, `main.tsx` | `useCart` fora do provider lança erro claro | `feat: add cart context` | Concluído |
 | T-17 | Botão do card adiciona ao carrinho e reseta quantidade para 1 | RF-03, RN-02 | `components/CoffeeCard/` | Re-adicionar soma (verificado via React DevTools/Playwright) | `feat: add coffee to cart` | Concluído |
 | T-18 | `CartBadge` no Header com soma das unidades | RF-04 | `components/CartBadge/`, `components/Header/` | 2+1 do mesmo café → "3"; oculto em 0 | `feat: show cart units in header` | Concluído |
-| T-19 | `cartCalculations` (subtotal, taxa fixa, total) + UT-06 | RF-10, RN-03, RN-04 | `utils/cartCalculations.ts`, teste | Testes passam; taxa em uma constante só | `feat: add cart total calculations` | A fazer |
+| T-19 | `cartCalculations` (subtotal, taxa fixa, total) + UT-06 | RF-10, RN-03, RN-04 | `utils/cartCalculations.ts`, teste | Testes passam; taxa em uma constante só | `feat: add cart total calculations` | Concluído |
 
 ## Fase 7 — Persistência (`feature/cart`, continuação)
 
@@ -137,3 +137,4 @@
 | T-16 | 2026-11-20 | Vitest 15/15 (useCart fora do provider lança erro); lint sem avisos (contexto em arquivo separado p/ Fast Refresh) | `feat: add cart context` |
 | T-17 | 2026-11-20 | Vitest: +1 e adicionar → latte:2, seletor volta a 1, re-adicionar → latte:3 | `feat: add coffee to cart` |
 | T-18 | 2026-11-20 | IT-01 (2+1 Latte + 1 Cubano → badge 4); Chrome: 2 Tradicional + 1 Americano → badge 3 | `feat: show cart units in header` |
+| T-19 | 2026-11-20 | UT-06: 29,70 + 3,50 = 33,20 em centavos; taxa em uma constante; Vitest OK | `feat: add cart total calculations` |
