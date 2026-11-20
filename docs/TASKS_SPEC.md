@@ -83,10 +83,10 @@
 
 | ID | Objetivo | Req. | Arquivos | Critério de pronto | Commit sugerido | Status |
 |---|---|---|---|---|---|---|
-| T-32 | `ThemeContext`/`useTheme` (localStorage + prefers-color-scheme) + `ThemeToggle` | RF-14 | `contexts/ThemeContext.tsx`, `hooks/useTheme.ts`, `components/ThemeToggle/` | Alterna, persiste, respeita preferência do SO | `feat: add light and dark theme toggle` | A fazer |
-| T-33 | Revisar contraste do tema escuro em todas as telas | RF-14, RNF a11y | `styles/themes/dark.ts` | Contraste AA conferido | `style: adjust dark theme contrast` | A fazer |
-| T-34 | Home responsiva (320–1440) | RF-15 | componentes da Home | Sem scroll horizontal; prints 390/320 | `style: make home responsive` | A fazer |
-| T-35 | Checkout e Sucesso responsivos | RF-15 | componentes de checkout/success | Coluna única no mobile; alvos de toque OK | `style: make checkout and success responsive` | A fazer |
+| T-32 | `ThemeContext`/`useTheme` (localStorage + prefers-color-scheme) + `ThemeToggle` | RF-14 | `contexts/ThemeContext.tsx`, `hooks/useTheme.ts`, `components/ThemeToggle/` | Alterna, persiste, respeita preferência do SO | `feat: add light and dark theme toggle` | Concluído |
+| T-33 | Revisar contraste do tema escuro em todas as telas | RF-14, RNF a11y | `styles/themes/dark.ts` | Contraste AA conferido | `style: adjust dark theme contrast` | Concluído |
+| T-34 | Home responsiva (320–1440) | RF-15 | componentes da Home | Sem scroll horizontal; prints 390/320 | `style: make home responsive` | Concluído |
+| T-35 | Checkout e Sucesso responsivos | RF-15 | componentes de checkout/success | Coluna única no mobile; alvos de toque OK | `style: make checkout and success responsive` | Concluído |
 
 ## Fase 11 — Qualidade (`feature/quality`)
 
@@ -150,3 +150,7 @@
 | T-29 | 2026-11-20 | Vitest: createOrder (snapshot em centavos); pedido válido → /success, carrinho vazio, last-order salvo; inválido fica no checkout sem pedido | `feat: confirm order and clear cart` |
 | T-30 | 2026-11-20 | IT-04: dados do snapshot com carrinho vazio. Chrome: fluxo real (CEP 90250-440 via ViaCEP, nº 102, crédito) → /success igual ao Figma, badge zerado | `feat: add order success page` |
 | T-31 | 2026-11-20 | Vitest: /success sem pedido → "Nenhum pedido confirmado" + link Ver cafés. EmptyState reutilizável (carrinho vazio e sucesso) | `feat: handle success page without order` |
+| T-32 | 2026-11-20 | IT-05: alterna, aria-pressed, persiste após remontar; fallback prefers-color-scheme; escolha salva vence sistema. Chrome: Home em dark conferida | `feat: add persistent dark theme toggle` |
+| T-33 | 2026-11-20 | Script de contraste WCAG em 25 pares × 2 temas: escuro 100% AA; claro corrigido (label, onAccent, yellowText, ícone no amarelo). Chrome: Home/Checkout conferidos nos dois temas | `style: improve theme color contrast` |
+| T-34 | 2026-11-20 | Chrome (iframes 320/390/768 + desktop 1036): sem rolagem horizontal; hero empilha; catálogo 4→3→2→1 col; header compacto com localização só ícone (texto p/ leitor de tela) | `style: make home responsive` |
+| T-35 | 2026-11-20 | Chrome (iframes 320/390/768): checkout em 1 coluna abaixo de 1024px, grade de endereço adaptada, pagamento empilhado, item do carrinho sem vazamento; sucesso empilha card + ilustração; scrollWidth sem overflow | `style: make checkout and success responsive` |

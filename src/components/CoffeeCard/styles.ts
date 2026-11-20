@@ -33,7 +33,7 @@ export const Tags = styled.ul`
     padding: 0.25rem 0.5rem;
     border-radius: 100px;
     background: ${({ theme }) => theme.colors.yellowLight};
-    color: ${({ theme }) => theme.colors.yellowDark};
+    color: ${({ theme }) => theme.colors.yellowText};
     ${typography.tag}
   }
 `

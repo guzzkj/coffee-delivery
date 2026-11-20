@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { media } from '../../styles/breakpoints'
 import { typography } from '../../styles/typography'
 
 export const PaymentFieldset = styled.fieldset`
@@ -20,6 +21,10 @@ export const Options = styled.div`
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.75rem;
+
+  ${media.mobile} {
+    grid-template-columns: minmax(0, 1fr);
+  }
 `
 
 export const OptionLabel = styled.label`

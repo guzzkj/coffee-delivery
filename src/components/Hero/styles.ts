@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { media } from '../../styles/breakpoints'
 import { typography } from '../../styles/typography'
 
 export const HeroContainer = styled.section`
@@ -8,6 +9,12 @@ export const HeroContainer = styled.section`
   justify-content: space-between;
   gap: 3.5rem;
   padding: 5.75rem 0;
+
+  ${media.laptop} {
+    flex-direction: column-reverse;
+    gap: 2.5rem;
+    padding: 2.5rem 0 3.5rem;
+  }
 
   /* Fundo desfocado amarelo/roxo do Figma, ocupando a largura toda da tela */
   &::before {
@@ -29,9 +36,21 @@ export const HeroContent = styled.div`
   gap: 4.125rem;
   max-width: 36.75rem;
 
+  ${media.laptop} {
+    gap: 2.5rem;
+  }
+
   h1 {
     ${typography.titleXL}
     color: ${({ theme }) => theme.colors.title};
+
+    ${media.tablet} {
+      font-size: 2.25rem;
+    }
+
+    ${media.mobile} {
+      font-size: 1.875rem;
+    }
   }
 
   p {
@@ -46,6 +65,10 @@ export const Benefits = styled.ul`
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.25rem 2.5rem;
+
+  ${media.mobile} {
+    grid-template-columns: 1fr;
+  }
 `
 
 export const Benefit = styled.li`
@@ -69,10 +92,15 @@ export const BenefitIcon = styled.span<BenefitIconProps>`
   height: 2rem;
   border-radius: 50%;
   background: ${({ theme, $color }) => theme.colors[$color]};
-  color: ${({ theme }) => theme.colors.background};
+  color: ${({ theme, $color }) => ($color === 'yellow' ? theme.colors.onAccent : theme.colors.background)};
 `
 
 export const HeroImage = styled.img`
   width: 29.75rem;
+  max-width: 100%;
   height: auto;
+
+  ${media.laptop} {
+    width: 22rem;
+  }
 `

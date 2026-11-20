@@ -421,6 +421,7 @@ Execução: `npm run test` (Vitest, watch) · `npm run test -- --run` (uma execu
 | Mensagens do Zod | `errorMap` (Zod 3) | parâmetro `error` (Zod 4) | Versão atual da biblioteca |
 | Organização dos docs | SPECs dentro de `agents.md`, regras em `spec.md` | `docs/PRD_SPEC.md`, `TECH_SPEC.md`, `TASKS_SPEC.md` + `AGENTS.md` | Exigência do enunciado |
 | Ação de limpeza | Só `CONFIRM_ORDER` | `CONFIRM_ORDER` + `CLEAR_CART` | `CLEAR_CART` mantido como utilitário |
+| Cores do tema claro (T-33) | Figma: `label` #8D8686, texto branco sobre amarelo, tags `yellowDark` sobre `yellowLight` | `label` #6E6767, `onAccent` #272221 (texto escuro no botão/badge amarelo), novo token `yellowText` #8C5A0E | Pares do Figma ficavam entre 2.0:1 e 3.3:1; WCAG 2.2 AA exige 4.5:1 (texto) e 3:1 (ícones). Tema escuro já passava em todos os pares |
 
 ## 15. Deploy
 

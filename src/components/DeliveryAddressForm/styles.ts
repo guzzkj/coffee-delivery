@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { media } from '../../styles/breakpoints'
 import { typography } from '../../styles/typography'
 
 // Grade igual ao Figma: CEP (+ status da busca) | Rua | Número + Complemento | Bairro + Cidade + UF
@@ -11,6 +12,18 @@ export const AddressGrid = styled.div`
     'number complement complement'
     'neighborhood city state';
   gap: 1rem 0.75rem;
+
+  ${media.mobile} {
+    grid-template-columns: minmax(0, 1fr) 4rem;
+    grid-template-areas:
+      'cep cep'
+      'status status'
+      'street street'
+      'number number'
+      'complement complement'
+      'neighborhood neighborhood'
+      'city state';
+  }
 
   .cep {
     grid-area: cep;
@@ -47,4 +60,11 @@ export const CepStatus = styled.p<CepStatusProps>`
   ${typography.textS}
   font-size: 0.75rem;
   color: ${({ theme, $isError }) => ($isError ? theme.colors.danger : theme.colors.text)};
+
+  /* no mobile o status ocupa uma linha própria: vazio, não deixa buraco na grade */
+  ${media.mobile} {
+    &:empty {
+      margin-top: -1rem;
+    }
+  }
 `
