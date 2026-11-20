@@ -12,7 +12,7 @@
 
 ## Pendências obrigatórias (entrega no Blackboard)
 
-### P-01 — Publicar na Vercel (Gustavo)
+### P-01 — Publicar na Vercel (Gustavo) — ✅ concluída: https://coffee-delivery-chi-bay.vercel.app/
 1. Em vercel.com → *Add New Project* → importar `guzzkj/coffee-delivery`.
 2. Preset **Vite**; build `npm run build`; saída `dist`; branch de produção `main`.
 3. Depois do deploy, testar na URL pública:
@@ -21,7 +21,7 @@
    - CEP 01310-100 preenche o endereço (ViaCEP funciona em produção).
    - Tema escuro persiste depois do reload.
 
-### P-02 — Link da aplicação no README
+### P-02 — Link da aplicação no README — ✅ concluída
 - Trocar a linha `_adicionar o link da Vercel após o primeiro deploy_` em `README.md` pelo link real.
 - Commit sugerido: `docs: add deployed app link` (em `dev`, depois merge `--no-ff` em `main`).
 

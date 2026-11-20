@@ -2,7 +2,7 @@
 
 Cafeteria em **Single Page Application**: catálogo de cafés, carrinho, checkout com endereço preenchido pelo CEP e confirmação de um pedido fictício. Projeto Final 05 da disciplina *Single Page Application* (Senac), feito em React + TypeScript com apoio de IA documentado.
 
-- **Aplicação publicada:** _adicionar o link da Vercel após o primeiro deploy_
+- **Aplicação publicada:** https://coffee-delivery-chi-bay.vercel.app/
 - **Figma:** [Coffee Delivery • Projeto Final React](https://www.figma.com/design/yGPNTA0Yczb183EikXGIiA/Coffee-Delivery-%E2%80%A2-Projeto-Final-React?node-id=2-1297)
 
 ![Home desktop](docs/screenshots/home-desktop.png)
@@ -105,7 +105,7 @@ Desenvolvido com **Claude Code** como assistente: análise do enunciado, SPECs, 
 
 ## Deploy
 
-Configurado para a **Vercel** (`vercel.json` reescreve todas as rotas para `index.html`, então F5 em `/checkout` e `/success` funciona). Importar o repositório na Vercel com o preset Vite (build `npm run build`, saída `dist`).
+Configurado para a **Vercel** (`vercel.json` reescreve todas as rotas para `index.html`, então F5 em `/checkout` e `/success` funciona). Importar o repositório na Vercel com o preset Vite (build `npm run build`, saída `dist`). Publicado em https://coffee-delivery-chi-bay.vercel.app/ a partir da branch `main`.
 
 ## Fora do escopo
 
