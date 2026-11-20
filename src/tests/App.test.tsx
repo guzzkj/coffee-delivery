@@ -21,6 +21,6 @@ describe('App routes', () => {
 
   it('shows a header link to the cart', () => {
     renderWithProviders(<App />)
-    expect(screen.getByRole('link', { name: 'Ver carrinho' })).toHaveAttribute('href', '/checkout')
+    expect(screen.getByRole('link', { name: /Ver carrinho/ })).toHaveAttribute('href', '/checkout')
   })
 })
