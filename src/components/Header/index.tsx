@@ -24,7 +24,7 @@ export function Header() {
         <Actions>
           <Location>
             <MapPin size={22} weight="fill" aria-hidden />
-            Porto Alegre, RS
+            <span>Porto Alegre, RS</span>
           </Location>
 
           <ThemeToggle />
