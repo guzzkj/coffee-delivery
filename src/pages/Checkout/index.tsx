@@ -1,6 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { CurrencyDollar, MapPinLine } from '@phosphor-icons/react'
 import { useForm, useWatch } from 'react-hook-form'
+import { useNavigate } from 'react-router'
 import { CartItem } from '../../components/CartItem'
 import { CartSummary } from '../../components/CartSummary'
 import { DeliveryAddressForm } from '../../components/DeliveryAddressForm'
@@ -20,7 +21,9 @@ export function Checkout() {
     incrementItem,
     decrementItem,
     removeItem,
+    confirmOrder,
   } = useCart()
+  const navigate = useNavigate()
 
   // React Hook Form + Zod: o resolver valida todos os campos com o checkoutSchema
   const {
@@ -47,9 +50,13 @@ export function Checkout() {
   const cep = useWatch({ control, name: 'cep' })
   const { isLoadingCep, cepError, cepFound } = useCepLookup({ cep, setValue, setFocus })
 
-  // Só é chamada quando o formulário passa na validação (a confirmação vem na T-29)
+  // Só é chamada quando o formulário passa na validação do Zod (RN-10)
   function handleConfirmOrder(data: CheckoutFormData) {
-    void data
+    const order = confirmOrder(data)
+
+    if (order) {
+      navigate('/success')
+    }
   }
 
   // RN-09 / RF-11: sem itens não há o que confirmar

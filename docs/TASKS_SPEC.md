@@ -70,7 +70,7 @@
 | T-26 | `services/viaCep.ts` + UT-09 com fetch mockado | RN-07 | `services/viaCep.ts`, teste | Trata sucesso, não encontrado e falha | `feat: add cep lookup service` | Concluído |
 | T-27 | `useCepLookup` (sanitiza `\D`, busca ao chegar a 8 dígitos, `setValue`, `isLoadingCep`/`cepError`, campos editáveis após erro) | RF-08, RN-07 | `hooks/useCepLookup.ts`, `components/DeliveryAddressForm/` | Testado com CEP válido, inexistente e Offline no DevTools | `feat: autofill address from cep` | Concluído |
 | T-28 | `PaymentMethodSelector` (grupo de rádio `credit`/`debit`/`money`, alvos ≥ 44 px) no formulário | RF-09 | `components/PaymentMethodSelector/` | Teclado funciona; erro se nada selecionado | `feat: add payment method selector` | Concluído |
-| T-29 | `confirmOrder`: bloqueio (RN-10), monta snapshot, despacha `CONFIRM_ORDER` (guarda pedido + esvazia), navega | RF-11, RF-12, RF-13, RN-06 | `contexts/CartContext.tsx`, `pages/Checkout/` | Pedido inválido não avança; válido vai a `/success` | `feat: confirm order and clear cart` | A fazer |
+| T-29 | `confirmOrder`: bloqueio (RN-10), monta snapshot, despacha `CONFIRM_ORDER` (guarda pedido + esvazia), navega | RF-11, RF-12, RF-13, RN-06 | `contexts/CartContext.tsx`, `pages/Checkout/` | Pedido inválido não avança; válido vai a `/success` | `feat: confirm order and clear cart` | Concluído |
 
 ## Fase 9 — Sucesso (`feature/success`)
 
@@ -147,3 +147,4 @@
 | T-26 | 2026-11-20 | UT-09 (6 casos, fetch mockado): sucesso normalizado, {erro:true} → not-found, rede/HTTP 500 → unavailable, CEP incompleto não chama API | `feat: add cep lookup service` |
 | T-27 | 2026-11-20 | Vitest (fetch mockado): preenche rua/bairro/cidade/UF e foca Número; CEP inexistente e API fora com mensagem, campos editáveis. Chrome com ViaCEP real: 01310-100 → Avenida Paulista, Bela Vista, São Paulo/SP | `feat: autofill address from cep` |
 | T-28 | 2026-11-20 | Vitest: sem escolha → erro role=alert; só uma opção marcada. Chrome: clique em Débito + seta → Dinheiro (radio real, foco visível) | `feat: add payment method selector` |
+| T-29 | 2026-11-20 | Vitest: createOrder (snapshot em centavos); pedido válido → /success, carrinho vazio, last-order salvo; inválido fica no checkout sem pedido | `feat: confirm order and clear cart` |
