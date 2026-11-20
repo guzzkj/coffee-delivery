@@ -5,8 +5,8 @@
 
 Ferramentas:
 - **Claude Code** (assistente de desenvolvimento) — análise, SPECs, arquitetura, implementação em etapas, revisão, testes.
-- **Context7 MCP** — documentação atualizada de React, React Router, React Hook Form, Zod, styled-components, Vite. (evidência a registrar na primeira consulta real)
-- **Playwright MCP** — validação de interface (desktop/mobile/dark).
+- **Context7 MCP** — previsto para documentação atualizada. **Não estava conectado** no ambiente usado; a API foi conferida nas declarações de tipo (`.d.ts`) dos pacotes instalados (ver Interação 03). Pendente: 1 consulta real feita pelo Gustavo para evidência.
+- **Playwright MCP** — previsto para validação. **Não estava disponível**; a validação foi feita com a extensão de navegador do Claude (Chrome) e prints gerados com Chrome headless via DevTools Protocol (ver Interação 04).
 - **Claude Code** também gerou a logo em SVG (D-07) — ver `docs/BRANDING.md`.
 
 ---
@@ -48,21 +48,49 @@ Ferramentas:
 | Direitos de uso | Criação original para o projeto, sem marcas de terceiros |
 | Evidência | `src/assets/brand/*`, `public/favicon.svg`, `docs/BRANDING.md` |
 
-## Interação 03 — Consulta Context7
+## Interação 03 — Conferência de API (no lugar do Context7)
 
 | Campo | Registro |
 |---|---|
-| Data | — |
-| Pergunta | — |
-| Resposta (resumo) | — |
-| Como foi aplicada | — |
-| Evidência | — |
+| Data | 2026-11-20 |
+| Ferramenta | Claude Code (leitura de `node_modules/*/*.d.ts`) |
+| Pergunta | "Como passar mensagem de erro no Zod 4 e como integrar com React Hook Form 7 sem `any`?" |
+| Resposta (resumo) | No Zod 4 o parâmetro é `error` (o `errorMap` do Zod 3 saiu); `zodResolver` vem de `@hookform/resolvers/zod`; tipos de entrada/saída com `z.input`/`z.output`. Para observar o CEP, `useWatch({ control, name })` em vez de `watch()` (o lint do React Compiler acusava `incompatible-library`). |
+| Como foi aplicada | `src/schemas/checkoutSchema.ts`, `src/pages/Checkout/index.tsx` |
+| Evidência | Commits `feat: add delivery address form`, `feat: autofill address from cep`; divergência registrada no TECH_SPEC §14 |
+| Observação | Context7 MCP não estava conectado na sessão. A evidência de uma consulta real ao Context7 deve ser adicionada aqui pelo Gustavo (print). |
 
-## Interação 04 — Validação com Playwright MCP
+## Interação 04 — Validação da interface (no lugar do Playwright MCP)
 
 | Campo | Registro |
 |---|---|
-| Data | — |
-| Roteiro | — |
-| Resultado | — |
-| Evidência | — |
+| Data | 2026-11-20 |
+| Ferramenta | Claude Code + extensão Claude in Chrome; Chrome headless via DevTools Protocol |
+| Roteiro | Cada task com UI: abrir `localhost`, interagir (adicionar, quantidade, remover, CEP real na ViaCEP, pagamento, confirmar), conferir console, testar 320/390/768/1440 (iframes de largura fixa) e o tema escuro. Fluxo completo só com teclado na T-36. |
+| Resultado | Sem rolagem horizontal; checkout em 1 coluna abaixo de 1024 px; foco visível; erro do formulário foca o primeiro campo inválido; CEP 01310-100 preenche Avenida Paulista/Bela Vista/São Paulo/SP. Achados corrigidos: preço vazando do card em 320 px (T-35) e linha vazia do status do CEP no mobile. |
+| Evidência | `docs/screenshots/*.png` (12 prints: 3 telas × claro/escuro × desktop/mobile); registro de testes no `docs/TASKS_SPEC.md` |
+
+## Interação 05 — Implementação guiada por lint e testes (hook do CEP)
+
+| Campo | Registro |
+|---|---|
+| Data | 2026-11-20 |
+| Ferramenta | Claude Code |
+| Problema | Primeira versão do `useCepLookup` chamava `setState` direto no efeito (aviso `set-state-in-effect` do oxlint). |
+| Solução | Guardar só o resultado da última consulta junto com o CEP consultado e **derivar** `isLoadingCep`, `cepError` e `cepFound` na renderização; `AbortController` cancela a busca antiga. |
+| Evidência | `src/hooks/useCepLookup.ts`, `src/tests/cepLookup.test.tsx` |
+
+## Interação 06 — Revisão de contraste (WCAG 2.2 AA)
+
+| Campo | Registro |
+|---|---|
+| Data | 2026-11-20 |
+| Ferramenta | Claude Code (script que calcula a razão de contraste de 25 pares de tokens nos dois temas) |
+| Resultado | Tema escuro: todos os pares passam. Tema claro: placeholder `#8D8686` (3.0:1), texto branco no botão amarelo (2.1:1) e tags amarelas (2.7:1) reprovavam. |
+| Decisão | Ajuste mínimo de tokens (`label`, `onAccent`, novo `yellowText`) mantendo a aparência do Figma; divergência registrada no TECH_SPEC §14. |
+| Evidência | Commit `style: improve theme color contrast` |
+
+## O que a IA **não** decidiu sozinha
+
+- Escolhas de produto (nome, biblioteca de estilo, regra do "−", repositório público) foram do Gustavo (Interação 01).
+- Commits, merges e push seguem a identidade do Gustavo; nenhuma mensagem de commit menciona IA.
