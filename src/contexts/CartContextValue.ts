@@ -1,4 +1,5 @@
 import { createContext } from 'react'
+import type { CheckoutFormData } from '../schemas/checkoutSchema'
 import type { CartItemDetailed } from '../types/cart'
 import type { Order } from '../types/order'
 
@@ -16,6 +17,8 @@ export type CartContextValue = {
   decrementItem: (coffeeId: string) => void
   removeItem: (coffeeId: string) => void
   clearCart: () => void
+  // Devolve o pedido criado, ou null se não havia itens
+  confirmOrder: (data: CheckoutFormData) => Order | null
 }
 
 export const CartContext = createContext<CartContextValue | null>(null)

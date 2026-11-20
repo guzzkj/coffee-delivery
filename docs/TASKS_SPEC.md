@@ -62,15 +62,15 @@
 
 | ID | Objetivo | Req. | Arquivos | Critério de pronto | Commit sugerido | Status |
 |---|---|---|---|---|---|---|
-| T-21 | Layout estático do Checkout (2 colunas desktop) | RF-15 (base) | `pages/Checkout/` | Estrutura igual ao Figma | `feat: add checkout page layout` | A fazer |
-| T-22 | `CartItem` + `CartSummary` ligados ao contexto | RF-05, RF-10 | `components/CartItem/`, `components/CartSummary/` | +/−/Remover atualizam totais e badge na hora | `feat: list selected coffees in checkout` | A fazer |
-| T-23 | `EmptyCart` quando não há itens | RN-09, RF-11 | `components/EmptyCart/` | Link volta para a Home; sem botão de confirmar ativo | `feat: add empty cart state` | A fazer |
-| T-24 | `checkoutSchema` (Zod 4, mensagens com `error`; conferir API no Context7) + UT-08 | RF-08, RF-09 | `schemas/checkoutSchema.ts`, teste | Testes passam | `feat: add checkout validation schema` | A fazer |
-| T-25 | `DeliveryAddressForm` com RHF + `zodResolver` (sem API ainda) | RF-08, RF-11 | `components/DeliveryAddressForm/`, `pages/Checkout/` | Erros por campo com `aria-invalid`/`aria-describedby` | `feat: add delivery address form` | A fazer |
-| T-26 | `services/viaCep.ts` + UT-09 com fetch mockado | RN-07 | `services/viaCep.ts`, teste | Trata sucesso, não encontrado e falha | `feat: add cep lookup service` | A fazer |
-| T-27 | `useCepLookup` (sanitiza `\D`, busca ao chegar a 8 dígitos, `setValue`, `isLoadingCep`/`cepError`, campos editáveis após erro) | RF-08, RN-07 | `hooks/useCepLookup.ts`, `components/DeliveryAddressForm/` | Testado com CEP válido, inexistente e Offline no DevTools | `feat: autofill address from cep` | A fazer |
-| T-28 | `PaymentMethodSelector` (grupo de rádio `credit`/`debit`/`money`, alvos ≥ 44 px) no formulário | RF-09 | `components/PaymentMethodSelector/` | Teclado funciona; erro se nada selecionado | `feat: add payment method selector` | A fazer |
-| T-29 | `confirmOrder`: bloqueio (RN-10), monta snapshot, despacha `CONFIRM_ORDER` (guarda pedido + esvazia), navega | RF-11, RF-12, RF-13, RN-06 | `contexts/CartContext.tsx`, `pages/Checkout/` | Pedido inválido não avança; válido vai a `/success` | `feat: confirm order and clear cart` | A fazer |
+| T-21 | Layout estático do Checkout (2 colunas desktop) | RF-15 (base) | `pages/Checkout/` | Estrutura igual ao Figma | `feat: add checkout page layout` | Concluído |
+| T-22 | `CartItem` + `CartSummary` ligados ao contexto | RF-05, RF-10 | `components/CartItem/`, `components/CartSummary/` | +/−/Remover atualizam totais e badge na hora | `feat: list selected coffees in checkout` | Concluído |
+| T-23 | `EmptyCart` quando não há itens | RN-09, RF-11 | `components/EmptyCart/` | Link volta para a Home; sem botão de confirmar ativo | `feat: add empty cart state` | Concluído |
+| T-24 | `checkoutSchema` (Zod 4, mensagens com `error`; conferir API no Context7) + UT-08 | RF-08, RF-09 | `schemas/checkoutSchema.ts`, teste | Testes passam | `feat: add checkout validation schema` | Concluído |
+| T-25 | `DeliveryAddressForm` com RHF + `zodResolver` (sem API ainda) | RF-08, RF-11 | `components/DeliveryAddressForm/`, `pages/Checkout/` | Erros por campo com `aria-invalid`/`aria-describedby` | `feat: add delivery address form` | Concluído |
+| T-26 | `services/viaCep.ts` + UT-09 com fetch mockado | RN-07 | `services/viaCep.ts`, teste | Trata sucesso, não encontrado e falha | `feat: add cep lookup service` | Concluído |
+| T-27 | `useCepLookup` (sanitiza `\D`, busca ao chegar a 8 dígitos, `setValue`, `isLoadingCep`/`cepError`, campos editáveis após erro) | RF-08, RN-07 | `hooks/useCepLookup.ts`, `components/DeliveryAddressForm/` | Testado com CEP válido, inexistente e Offline no DevTools | `feat: autofill address from cep` | Concluído |
+| T-28 | `PaymentMethodSelector` (grupo de rádio `credit`/`debit`/`money`, alvos ≥ 44 px) no formulário | RF-09 | `components/PaymentMethodSelector/` | Teclado funciona; erro se nada selecionado | `feat: add payment method selector` | Concluído |
+| T-29 | `confirmOrder`: bloqueio (RN-10), monta snapshot, despacha `CONFIRM_ORDER` (guarda pedido + esvazia), navega | RF-11, RF-12, RF-13, RN-06 | `contexts/CartContext.tsx`, `pages/Checkout/` | Pedido inválido não avança; válido vai a `/success` | `feat: confirm order and clear cart` | Concluído |
 
 ## Fase 9 — Sucesso (`feature/success`)
 
@@ -139,3 +139,12 @@
 | T-18 | 2026-11-20 | IT-01 (2+1 Latte + 1 Cubano → badge 4); Chrome: 2 Tradicional + 1 Americano → badge 3 | `feat: show cart units in header` |
 | T-19 | 2026-11-20 | UT-06: 29,70 + 3,50 = 33,20 em centavos; taxa em uma constante; Vitest OK | `feat: add cart total calculations` |
 | T-20 | 2026-11-20 | UT-10 (vazio, JSON corrompido, id/qtd inválidos) + remontagem mantém carrinho; Chrome: 2 Mocaccino → F5 → badge 2 | `feat: persist cart in local storage` |
+| T-21 | 2026-11-20 | Chrome: 2 colunas (Complete seu pedido / Cafés selecionados) com cards de endereço e pagamento; Vitest OK | `feat: add checkout page layout` |
+| T-22 | 2026-11-20 | Vitest: totais 29,70/3,50/33,20; +/−/Remover atualizam total e badge; − trava em 1. Chrome igual ao Figma | `feat: list selected coffees in checkout` |
+| T-23 | 2026-11-20 | IT-02: /checkout vazio mostra EmptyCart, link "Ver cafés" → / e sem botão Confirmar | `feat: add empty cart state` |
+| T-24 | 2026-11-20 | UT-08 (6 casos): válido, CEP com/sem hífen, complemento opcional, CEP/número/UF inválidos, sem pagamento. Zod 4.6.7 com parâmetro `error` (API conferida nos tipos do pacote) | `feat: add checkout validation schema` |
+| T-25 | 2026-11-20 | IT-03: submit vazio → erros com role=alert, aria-invalid e aria-describedby; complemento opcional sem erro; foco no CEP (Chrome) | `feat: add delivery address form` |
+| T-26 | 2026-11-20 | UT-09 (6 casos, fetch mockado): sucesso normalizado, {erro:true} → not-found, rede/HTTP 500 → unavailable, CEP incompleto não chama API | `feat: add cep lookup service` |
+| T-27 | 2026-11-20 | Vitest (fetch mockado): preenche rua/bairro/cidade/UF e foca Número; CEP inexistente e API fora com mensagem, campos editáveis. Chrome com ViaCEP real: 01310-100 → Avenida Paulista, Bela Vista, São Paulo/SP | `feat: autofill address from cep` |
+| T-28 | 2026-11-20 | Vitest: sem escolha → erro role=alert; só uma opção marcada. Chrome: clique em Débito + seta → Dinheiro (radio real, foco visível) | `feat: add payment method selector` |
+| T-29 | 2026-11-20 | Vitest: createOrder (snapshot em centavos); pedido válido → /success, carrinho vazio, last-order salvo; inválido fica no checkout sem pedido | `feat: confirm order and clear cart` |

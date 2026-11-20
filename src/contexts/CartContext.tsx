@@ -3,6 +3,7 @@ import { coffees } from '../data/coffees'
 import {
   addItem as addItemAction,
   clearCart as clearCartAction,
+  confirmOrder as confirmOrderAction,
   decrementItem as decrementItemAction,
   incrementItem as incrementItemAction,
   removeItem as removeItemAction,
@@ -11,6 +12,7 @@ import { cartReducer } from '../reducers/cartReducer'
 import { loadInitialCartState } from '../reducers/loadInitialCartState'
 import { removeStorage, STORAGE_KEYS, writeStorage } from '../utils/storage'
 import { calculateSubtotal, calculateTotal, DELIVERY_FEE_IN_CENTS } from '../utils/cartCalculations'
+import { createOrder } from '../utils/createOrder'
 import { CartContext, type CartContextValue } from './CartContextValue'
 
 type CartProviderProps = {
@@ -61,6 +63,23 @@ export function CartProvider({ children }: CartProviderProps) {
     decrementItem: (coffeeId) => dispatch(decrementItemAction(coffeeId)),
     removeItem: (coffeeId) => dispatch(removeItemAction(coffeeId)),
     clearCart: () => dispatch(clearCartAction()),
+    confirmOrder: (data) => {
+      // RN-10: nunca confirma um carrinho vazio
+      if (items.length === 0) {
+        return null
+      }
+
+      // id e data não são "puros", por isso o pedido é montado aqui, fora do reducer
+      const order = createOrder({
+        items,
+        data,
+        id: crypto.randomUUID(),
+        createdAt: new Date().toISOString(),
+      })
+
+      dispatch(confirmOrderAction(order)) // guarda o snapshot e esvazia o carrinho
+      return order
+    },
   }
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>
