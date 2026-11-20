@@ -92,7 +92,7 @@
 
 | ID | Objetivo | Req. | Arquivos | Critério de pronto | Commit sugerido | Status |
 |---|---|---|---|---|---|---|
-| T-36 | Revisão de acessibilidade (foco, labels, aria-live, teclado, reduced motion) | RNF a11y | vários | Fluxo completo só com teclado | `fix: improve accessibility across pages` | A fazer |
+| T-36 | Revisão de acessibilidade (foco, labels, aria-live, teclado, reduced motion) | RNF a11y | vários | Fluxo completo só com teclado | `fix: improve accessibility across pages` | Concluído |
 | T-37 | Testes de fluxo IT-01..IT-05 (Testing Library) | RF-03..RF-14 | `src/tests/*` | `npm run test -- --run` verde | `test: cover main user flows` | A fazer |
 | T-38 | Validação Playwright (desktop/mobile/dark) + prints em `docs/screenshots` | RF-07, RF-15 | `docs/screenshots/*` | Prints Home, Checkout, Sucesso, Dark (desktop+mobile) | `docs: add app screenshots` | A fazer |
 
@@ -154,3 +154,4 @@
 | T-33 | 2026-11-20 | Script de contraste WCAG em 25 pares × 2 temas: escuro 100% AA; claro corrigido (label, onAccent, yellowText, ícone no amarelo). Chrome: Home/Checkout conferidos nos dois temas | `style: improve theme color contrast` |
 | T-34 | 2026-11-20 | Chrome (iframes 320/390/768 + desktop 1036): sem rolagem horizontal; hero empilha; catálogo 4→3→2→1 col; header compacto com localização só ícone (texto p/ leitor de tela) | `style: make home responsive` |
 | T-35 | 2026-11-20 | Chrome (iframes 320/390/768): checkout em 1 coluna abaixo de 1024px, grade de endereço adaptada, pagamento empilhado, item do carrinho sem vazamento; sucesso empilha card + ilustração; scrollWidth sem overflow | `style: make checkout and success responsive` |
+| T-36 | 2026-11-20 | Vitest a11y: skip link 1º Tab, aria-live ao adicionar, título + foco no main ao navegar. Chrome só teclado: skip link → +/adicionar → carrinho → submit vazio foca CEP inválido → CEP real foca Número → radio com espaço → confirmar → sucesso com foco no main | `fix: improve accessibility across pages` |

@@ -16,3 +16,21 @@ export const Main = styled.main`
     padding: 0 1rem 3rem;
   }
 `
+
+// Aparece só ao receber foco pelo teclado (primeiro Tab da página)
+export const SkipLink = styled.a`
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 20;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  background: ${({ theme }) => theme.colors.purpleDark};
+  color: ${({ theme }) => theme.colors.background};
+  font-weight: 700;
+  transform: translateY(-200%);
+
+  &:focus {
+    transform: translateY(0);
+  }
+`

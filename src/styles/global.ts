@@ -50,6 +50,21 @@ export const GlobalStyle = createGlobalStyle`
     outline-offset: 2px;
   }
 
+  /* esconde visualmente, mas mantém para leitores de tela */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+  }
+
+  /* o main recebe foco ao trocar de página; o contorno não é necessário ali */
+  main:focus {
+    outline: none;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
