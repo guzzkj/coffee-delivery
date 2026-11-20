@@ -56,7 +56,7 @@
 
 | ID | Objetivo | Req. | Arquivos | Critério de pronto | Commit sugerido | Status |
 |---|---|---|---|---|---|---|
-| T-20 | Persistir carrinho e último pedido (chaves `@coffee-delivery:*-1.0.0`, lazy init validado + `useEffect`) + UT-10 | RF-06, RN-06, RN-10 | `utils/storage.ts`, `CartContext.tsx`, teste | F5 mantém o carrinho; JSON corrompido não quebra | `feat: persist cart in local storage` | A fazer |
+| T-20 | Persistir carrinho e último pedido (chaves `@coffee-delivery:*-1.0.0`, lazy init validado + `useEffect`) + UT-10 | RF-06, RN-06, RN-10 | `utils/storage.ts`, `CartContext.tsx`, teste | F5 mantém o carrinho; JSON corrompido não quebra | `feat: persist cart in local storage` | Concluído |
 
 ## Fase 8 — Checkout (`feature/checkout`)
 
@@ -138,3 +138,4 @@
 | T-17 | 2026-11-20 | Vitest: +1 e adicionar → latte:2, seletor volta a 1, re-adicionar → latte:3 | `feat: add coffee to cart` |
 | T-18 | 2026-11-20 | IT-01 (2+1 Latte + 1 Cubano → badge 4); Chrome: 2 Tradicional + 1 Americano → badge 3 | `feat: show cart units in header` |
 | T-19 | 2026-11-20 | UT-06: 29,70 + 3,50 = 33,20 em centavos; taxa em uma constante; Vitest OK | `feat: add cart total calculations` |
+| T-20 | 2026-11-20 | UT-10 (vazio, JSON corrompido, id/qtd inválidos) + remontagem mantém carrinho; Chrome: 2 Mocaccino → F5 → badge 2 | `feat: persist cart in local storage` |

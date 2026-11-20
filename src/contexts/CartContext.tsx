@@ -1,4 +1,4 @@
-import { useReducer, type ReactNode } from 'react'
+import { useEffect, useReducer, type ReactNode } from 'react'
 import { coffees } from '../data/coffees'
 import {
   addItem as addItemAction,
@@ -7,7 +7,9 @@ import {
   incrementItem as incrementItemAction,
   removeItem as removeItemAction,
 } from '../reducers/cartActions'
-import { cartReducer, initialCartState } from '../reducers/cartReducer'
+import { cartReducer } from '../reducers/cartReducer'
+import { loadInitialCartState } from '../reducers/loadInitialCartState'
+import { removeStorage, STORAGE_KEYS, writeStorage } from '../utils/storage'
 import { calculateSubtotal, calculateTotal, DELIVERY_FEE_IN_CENTS } from '../utils/cartCalculations'
 import { CartContext, type CartContextValue } from './CartContextValue'
 
@@ -16,7 +18,22 @@ type CartProviderProps = {
 }
 
 export function CartProvider({ children }: CartProviderProps) {
-  const [state, dispatch] = useReducer(cartReducer, initialCartState)
+  // O terceiro argumento carrega o carrinho salvo só na primeira renderização
+  const [state, dispatch] = useReducer(cartReducer, undefined, loadInitialCartState)
+
+  // RF-06: sempre que os itens mudam, salva no localStorage
+  useEffect(() => {
+    writeStorage(STORAGE_KEYS.cart, state.items)
+  }, [state.items])
+
+  // RN-06: o pedido confirmado fica salvo separado, para /success sobreviver ao F5
+  useEffect(() => {
+    if (state.confirmedOrder) {
+      writeStorage(STORAGE_KEYS.lastOrder, state.confirmedOrder)
+    } else {
+      removeStorage(STORAGE_KEYS.lastOrder)
+    }
+  }, [state.confirmedOrder])
 
   // Valores derivados na renderização (não ficam em state):
   // junta cada item com o café do catálogo e descarta ids inexistentes (RN-10)
