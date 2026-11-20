@@ -28,7 +28,7 @@
 
 | ID | Objetivo | Req. | Arquivos | Critério de pronto | Commit sugerido | Status |
 |---|---|---|---|---|---|---|
-| T-07 | Gerar logo com IA (claro/escuro), registrar prompt/resultado/decisão | RF-16 | `docs/AI_USAGE.md`, `docs/BRANDING.md` (ou seção do README) | Logo aprovada pelo Gustavo; legível em 32 px | `docs: document ai branding process` | A fazer |
+| T-07 | Gerar logo com IA (claro/escuro), registrar prompt/resultado/decisão | RF-16 | `docs/AI_USAGE.md`, `docs/BRANDING.md` (ou seção do README) | Logo aprovada pelo Gustavo; legível em 32 px | `docs: document ai branding process` | Concluído |
 | T-08 | Adicionar logos em `src/assets/brand` e favicon em `public/` | RF-16 | `src/assets/brand/*`, `public/favicon.svg`, `index.html` | Favicon visível na aba; título da página definido | `feat: add ai generated logo and favicon` | A fazer |
 
 ## Fase 5 — Home (`feature/home`)
@@ -125,3 +125,4 @@
 | T-04 | 2026-11-20 | `npm run test -- --run` 1/1 OK; build + lint OK | `chore: configure vitest` |
 | T-05 | 2026-11-20 | Vitest 3/3 (rotas `/`, `/checkout`, `*` → `/`); build + lint OK; react-router 8.5.2 | `feat: add app routes` |
 | T-06 | 2026-11-20 | styled-components 6.6.0; tokens claro (Figma) + escuro (proposta) com tipos compartilhados; build/test/lint OK | `style: add theme tokens and global styles` |
+| T-07 | 2026-11-20 | Logo SVG gerada; prompt/resultado/decisão em BRANDING.md e AI_USAGE | `docs: document ai branding process` |

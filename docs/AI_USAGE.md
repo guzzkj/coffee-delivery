@@ -7,7 +7,7 @@ Ferramentas:
 - **Claude Code** (assistente de desenvolvimento) — análise, SPECs, arquitetura, implementação em etapas, revisão, testes.
 - **Context7 MCP** — documentação atualizada de React, React Router, React Hook Form, Zod, styled-components, Vite. (evidência a registrar na primeira consulta real)
 - **Playwright MCP** — validação de interface (desktop/mobile/dark).
-- **Ferramenta de geração de logo** — a definir na T-07 (D-07).
+- **Claude Code** também gerou a logo em SVG (D-07) — ver `docs/BRANDING.md`.
 
 ---
 
@@ -39,14 +39,14 @@ Ferramentas:
 
 | Campo | Registro |
 |---|---|
-| Data | — |
-| Ferramenta | — |
+| Data | 2026-11-20 |
+| Ferramenta | Claude Code (geração da logo como SVG) |
 | Objetivo | Gerar logo original para Header e favicon (versões claro/escuro) |
-| Prompt | — |
-| Resultado | — |
-| Decisão / motivos | — |
-| Direitos de uso | — |
-| Evidência | — |
+| Prompt | Ver `docs/BRANDING.md` (copo para viagem + pin de localização, só cores do Style Guide, legível em 32 px) |
+| Resultado | Símbolo + 2 variações com nome; favicon SVG |
+| Decisão / motivos | Vetor nítido e leve, paleta do Figma, pin liga a marca à entrega; nome em texto HTML no Header para seguir o tema |
+| Direitos de uso | Criação original para o projeto, sem marcas de terceiros |
+| Evidência | `src/assets/brand/*`, `public/favicon.svg`, `docs/BRANDING.md` |
 
 ## Interação 03 — Consulta Context7
 

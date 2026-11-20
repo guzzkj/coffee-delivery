@@ -146,7 +146,7 @@
 | D-04 | Taxa de entrega fixa R$ 3,50 | Decidido |
 | D-05 | API de CEP: ViaCEP (`https://viacep.com.br/ws/{cep}/json/`) | Decidido |
 | D-06 | Deploy: Vercel | Decidido |
-| D-07 | Ferramenta de IA para logo | Pendente — decidir na T-07 |
+| D-07 | Ferramenta de IA para logo | Decidido — Claude Code gerando SVG (ver `docs/BRANDING.md`) |
 | D-08 | Último pedido persistido em `localStorage` para `/success` sobreviver a refresh | Decidido |
 | D-09 | Rota inexistente redireciona para `/` | Decidido |
 | D-10 | Previsão de entrega fixa "20 min - 30 min" (texto do Figma) | Decidido |
