@@ -46,7 +46,7 @@
 
 | ID | Objetivo | Req. | Arquivos | Critério de pronto | Commit sugerido | Status |
 |---|---|---|---|---|---|---|
-| T-15 | Tipos de carrinho/pedido + `cartReducer` (ADD, INCREMENT, DECREMENT, REMOVE, CONFIRM_ORDER, CLEAR) + testes UT-01..05 | RF-03, RF-05, RN-01, RN-02 | `types/cart.ts`, `types/order.ts`, `reducers/*`, `tests/cartReducer.test.ts` | Testes passam; nenhuma mutação | `feat: add cart reducer` | A fazer |
+| T-15 | Tipos de carrinho/pedido + `cartReducer` (ADD, INCREMENT, DECREMENT, REMOVE, CONFIRM_ORDER, CLEAR) + testes UT-01..05 | RF-03, RF-05, RN-01, RN-02 | `types/cart.ts`, `types/order.ts`, `reducers/*`, `tests/cartReducer.test.ts` | Testes passam; nenhuma mutação | `feat: add cart reducer` | Concluído |
 | T-16 | `CartContext` + `CartProvider` + `useCart` | RF-03 | `contexts/CartContext.tsx`, `hooks/useCart.ts`, `main.tsx` | `useCart` fora do provider lança erro claro | `feat: add cart context` | A fazer |
 | T-17 | Botão do card adiciona ao carrinho e reseta quantidade para 1 | RF-03, RN-02 | `components/CoffeeCard/` | Re-adicionar soma (verificado via React DevTools/Playwright) | `feat: add coffee to cart` | A fazer |
 | T-18 | `CartBadge` no Header com soma das unidades | RF-04 | `components/CartBadge/`, `components/Header/` | 2+1 do mesmo café → "3"; oculto em 0 | `feat: show cart units in header` | A fazer |
@@ -133,3 +133,4 @@
 | T-12 | 2026-11-20 | Conferido no Chrome (título, subtítulo, 4 benefícios, imagem, fundo desfocado); Vitest 4/4 | `feat: add home hero section` |
 | T-13 | 2026-11-20 | Vitest: 14 cards com nome/descrição/tags/preço; Chrome sem scroll horizontal (scrollWidth = clientWidth) | `feat: render coffee catalog` |
 | T-14 | 2026-11-20 | Vitest: começa em 1, − desabilitado em 1, + incrementa; Chrome: clique no + do Latte → 2 | `feat: add quantity selector to coffee card` |
+| T-15 | 2026-11-20 | UT-01..UT-05 OK (14/14); estado original intacto (structuredClone) | `feat: add cart reducer` |
