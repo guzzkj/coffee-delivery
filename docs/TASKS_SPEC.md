@@ -35,7 +35,7 @@
 
 | ID | Objetivo | Req. | Arquivos | Critério de pronto | Commit sugerido | Status |
 |---|---|---|---|---|---|---|
-| T-09 | Tipos `Coffee`/`CoffeeTag` + catálogo local com imagens | RF-01, RN-08 | `types/coffee.ts`, `data/coffees.ts` (imagens já em `public/coffees/*.png`) | Catálogo tipado compila; preços em centavos | `feat: add typed coffee catalog` | A fazer |
+| T-09 | Tipos `Coffee`/`CoffeeTag` + catálogo local com imagens | RF-01, RN-08 | `types/coffee.ts`, `data/coffees.ts` (imagens já em `public/coffees/*.png`) | Catálogo tipado compila; preços em centavos | `feat: add typed coffee catalog` | Concluído |
 | T-10 | `formatCurrency` (centavos → BRL) + teste UT-07 | RN-04 | `utils/formatCurrency.ts`, `tests/formatCurrency.test.ts` | Teste passa | `feat: add currency formatter` | A fazer |
 | T-11 | `Header` estático (logo, localização, botão carrinho) | RF-16 | `components/Header/` | Igual ao Figma em 1440; link do carrinho vai a `/checkout` | `feat: add header component` | A fazer |
 | T-12 | `Hero` estático (título, subtítulo, 4 benefícios, imagem) | — | `components/Hero/` | Igual ao Figma em 1440 | `feat: add home hero section` | A fazer |
@@ -127,3 +127,4 @@
 | T-06 | 2026-11-20 | styled-components 6.6.0; tokens claro (Figma) + escuro (proposta) com tipos compartilhados; build/test/lint OK | `style: add theme tokens and global styles` |
 | T-07 | 2026-11-20 | Logo SVG gerada; prompt/resultado/decisão em BRANDING.md e AI_USAGE | `docs: document ai branding process` |
 | T-08 | 2026-11-20 | favicon.svg = símbolo da logo; título "Coffee Delivery"; build OK | `feat: add ai generated logo and favicon` |
+| T-09 | 2026-11-20 | 14 cafés tipados (`Coffee[]`), preços em centavos; tsc OK | `feat: add typed coffee catalog` |
