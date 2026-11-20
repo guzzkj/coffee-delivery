@@ -36,3 +36,12 @@ describe('Success page (RF-12, RF-13)', () => {
     expect(screen.getByRole('link', { name: 'Ver carrinho, vazio' })).toBeInTheDocument()
   })
 })
+
+describe('Success page without order (RN-09)', () => {
+  it('shows a message and a link to the catalog when accessed directly', () => {
+    renderWithProviders(<App />, { route: '/success' })
+
+    expect(screen.getByRole('heading', { name: 'Nenhum pedido confirmado' })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: 'Ver cafés' })).toHaveAttribute('href', '/')
+  })
+})

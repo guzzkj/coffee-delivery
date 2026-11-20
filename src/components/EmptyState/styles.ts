@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { typography } from '../../styles/typography'
 
-export const EmptyCartContainer = styled.section`
+export const EmptyStateContainer = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -77,7 +77,7 @@
 | ID | Objetivo | Req. | Arquivos | Critério de pronto | Commit sugerido | Status |
 |---|---|---|---|---|---|---|
 | T-30 | `OrderSuccess` com endereço, previsão e pagamento do snapshot | RF-12, RF-13 | `components/OrderSuccess/`, `pages/Success/` | Dados corretos mesmo com carrinho vazio e após F5 | `feat: add order success page` | Concluído |
-| T-31 | Estado vazio de `/success` sem pedido | RN-09 | `pages/Success/` | Acesso direto mostra mensagem + link Home | `feat: handle success page without order` | A fazer |
+| T-31 | Estado vazio de `/success` sem pedido | RN-09 | `pages/Success/` | Acesso direto mostra mensagem + link Home | `feat: handle success page without order` | Concluído |
 
 ## Fase 10 — Tema e mobile (`feature/theme-responsive`)
 
@@ -149,3 +149,4 @@
 | T-28 | 2026-11-20 | Vitest: sem escolha → erro role=alert; só uma opção marcada. Chrome: clique em Débito + seta → Dinheiro (radio real, foco visível) | `feat: add payment method selector` |
 | T-29 | 2026-11-20 | Vitest: createOrder (snapshot em centavos); pedido válido → /success, carrinho vazio, last-order salvo; inválido fica no checkout sem pedido | `feat: confirm order and clear cart` |
 | T-30 | 2026-11-20 | IT-04: dados do snapshot com carrinho vazio. Chrome: fluxo real (CEP 90250-440 via ViaCEP, nº 102, crédito) → /success igual ao Figma, badge zerado | `feat: add order success page` |
+| T-31 | 2026-11-20 | Vitest: /success sem pedido → "Nenhum pedido confirmado" + link Ver cafés. EmptyState reutilizável (carrinho vazio e sucesso) | `feat: handle success page without order` |
