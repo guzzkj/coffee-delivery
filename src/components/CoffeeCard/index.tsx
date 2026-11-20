@@ -1,5 +1,6 @@
 import { ShoppingCart } from '@phosphor-icons/react'
 import { useState } from 'react'
+import { useCart } from '../../hooks/useCart'
 import type { Coffee } from '../../types/coffee'
 import { formatPrice } from '../../utils/formatCurrency'
 import { QuantityInput } from '../QuantityInput'
@@ -12,6 +13,7 @@ type CoffeeCardProps = {
 export function CoffeeCard({ coffee }: CoffeeCardProps) {
   // Quantidade escolhida antes de adicionar (RF-02): estado local do card
   const [quantity, setQuantity] = useState(1)
+  const { addItem } = useCart()
 
   function handleIncrement() {
     setQuantity((current) => current + 1)
@@ -19,6 +21,11 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
 
   function handleDecrement() {
     setQuantity((current) => Math.max(1, current - 1))
+  }
+
+  function handleAddToCart() {
+    addItem(coffee.id, quantity)
+    setQuantity(1) // volta para 1 depois de adicionar
   }
 
   return (
@@ -47,7 +54,11 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
             label={coffee.name}
           />
 
-          <AddButton type="button" aria-label={`Adicionar ${coffee.name} ao carrinho`}>
+          <AddButton
+            type="button"
+            onClick={handleAddToCart}
+            aria-label={`Adicionar ${coffee.name} ao carrinho`}
+          >
             <ShoppingCart size={22} weight="fill" aria-hidden />
           </AddButton>
         </CardActions>

@@ -46,17 +46,17 @@
 
 | ID | Objetivo | Req. | Arquivos | Critério de pronto | Commit sugerido | Status |
 |---|---|---|---|---|---|---|
-| T-15 | Tipos de carrinho/pedido + `cartReducer` (ADD, INCREMENT, DECREMENT, REMOVE, CONFIRM_ORDER, CLEAR) + testes UT-01..05 | RF-03, RF-05, RN-01, RN-02 | `types/cart.ts`, `types/order.ts`, `reducers/*`, `tests/cartReducer.test.ts` | Testes passam; nenhuma mutação | `feat: add cart reducer` | A fazer |
-| T-16 | `CartContext` + `CartProvider` + `useCart` | RF-03 | `contexts/CartContext.tsx`, `hooks/useCart.ts`, `main.tsx` | `useCart` fora do provider lança erro claro | `feat: add cart context` | A fazer |
-| T-17 | Botão do card adiciona ao carrinho e reseta quantidade para 1 | RF-03, RN-02 | `components/CoffeeCard/` | Re-adicionar soma (verificado via React DevTools/Playwright) | `feat: add coffee to cart` | A fazer |
-| T-18 | `CartBadge` no Header com soma das unidades | RF-04 | `components/CartBadge/`, `components/Header/` | 2+1 do mesmo café → "3"; oculto em 0 | `feat: show cart units in header` | A fazer |
-| T-19 | `cartCalculations` (subtotal, taxa fixa, total) + UT-06 | RF-10, RN-03, RN-04 | `utils/cartCalculations.ts`, teste | Testes passam; taxa em uma constante só | `feat: add cart total calculations` | A fazer |
+| T-15 | Tipos de carrinho/pedido + `cartReducer` (ADD, INCREMENT, DECREMENT, REMOVE, CONFIRM_ORDER, CLEAR) + testes UT-01..05 | RF-03, RF-05, RN-01, RN-02 | `types/cart.ts`, `types/order.ts`, `reducers/*`, `tests/cartReducer.test.ts` | Testes passam; nenhuma mutação | `feat: add cart reducer` | Concluído |
+| T-16 | `CartContext` + `CartProvider` + `useCart` | RF-03 | `contexts/CartContext.tsx`, `hooks/useCart.ts`, `main.tsx` | `useCart` fora do provider lança erro claro | `feat: add cart context` | Concluído |
+| T-17 | Botão do card adiciona ao carrinho e reseta quantidade para 1 | RF-03, RN-02 | `components/CoffeeCard/` | Re-adicionar soma (verificado via React DevTools/Playwright) | `feat: add coffee to cart` | Concluído |
+| T-18 | `CartBadge` no Header com soma das unidades | RF-04 | `components/CartBadge/`, `components/Header/` | 2+1 do mesmo café → "3"; oculto em 0 | `feat: show cart units in header` | Concluído |
+| T-19 | `cartCalculations` (subtotal, taxa fixa, total) + UT-06 | RF-10, RN-03, RN-04 | `utils/cartCalculations.ts`, teste | Testes passam; taxa em uma constante só | `feat: add cart total calculations` | Concluído |
 
 ## Fase 7 — Persistência (`feature/cart`, continuação)
 
 | ID | Objetivo | Req. | Arquivos | Critério de pronto | Commit sugerido | Status |
 |---|---|---|---|---|---|---|
-| T-20 | Persistir carrinho e último pedido (chaves `@coffee-delivery:*-1.0.0`, lazy init validado + `useEffect`) + UT-10 | RF-06, RN-06, RN-10 | `utils/storage.ts`, `CartContext.tsx`, teste | F5 mantém o carrinho; JSON corrompido não quebra | `feat: persist cart in local storage` | A fazer |
+| T-20 | Persistir carrinho e último pedido (chaves `@coffee-delivery:*-1.0.0`, lazy init validado + `useEffect`) + UT-10 | RF-06, RN-06, RN-10 | `utils/storage.ts`, `CartContext.tsx`, teste | F5 mantém o carrinho; JSON corrompido não quebra | `feat: persist cart in local storage` | Concluído |
 
 ## Fase 8 — Checkout (`feature/checkout`)
 
@@ -133,3 +133,9 @@
 | T-12 | 2026-11-20 | Conferido no Chrome (título, subtítulo, 4 benefícios, imagem, fundo desfocado); Vitest 4/4 | `feat: add home hero section` |
 | T-13 | 2026-11-20 | Vitest: 14 cards com nome/descrição/tags/preço; Chrome sem scroll horizontal (scrollWidth = clientWidth) | `feat: render coffee catalog` |
 | T-14 | 2026-11-20 | Vitest: começa em 1, − desabilitado em 1, + incrementa; Chrome: clique no + do Latte → 2 | `feat: add quantity selector to coffee card` |
+| T-15 | 2026-11-20 | UT-01..UT-05 OK (14/14); estado original intacto (structuredClone) | `feat: add cart reducer` |
+| T-16 | 2026-11-20 | Vitest 15/15 (useCart fora do provider lança erro); lint sem avisos (contexto em arquivo separado p/ Fast Refresh) | `feat: add cart context` |
+| T-17 | 2026-11-20 | Vitest: +1 e adicionar → latte:2, seletor volta a 1, re-adicionar → latte:3 | `feat: add coffee to cart` |
+| T-18 | 2026-11-20 | IT-01 (2+1 Latte + 1 Cubano → badge 4); Chrome: 2 Tradicional + 1 Americano → badge 3 | `feat: show cart units in header` |
+| T-19 | 2026-11-20 | UT-06: 29,70 + 3,50 = 33,20 em centavos; taxa em uma constante; Vitest OK | `feat: add cart total calculations` |
+| T-20 | 2026-11-20 | UT-10 (vazio, JSON corrompido, id/qtd inválidos) + remontagem mantém carrinho; Chrome: 2 Mocaccino → F5 → badge 2 | `feat: persist cart in local storage` |
