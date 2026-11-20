@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { media } from '../../styles/breakpoints'
 import { typography } from '../../styles/typography'
 
 export const ItemContainer = styled.li`
@@ -10,6 +11,16 @@ export const ItemContainer = styled.li`
 
   img {
     flex-shrink: 0;
+  }
+
+  ${media.mobile} {
+    gap: 0.75rem;
+    padding-inline: 0;
+
+    img {
+      width: 3rem;
+      height: 3rem;
+    }
   }
 `
 

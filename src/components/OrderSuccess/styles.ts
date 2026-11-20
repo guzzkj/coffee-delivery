@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { media } from '../../styles/breakpoints'
 import { typography } from '../../styles/typography'
 
 export const SuccessContainer = styled.section`
@@ -10,13 +11,29 @@ export const SuccessContainer = styled.section`
 
   img {
     width: 30.75rem;
+    max-width: 100%;
     height: auto;
+  }
+
+  ${media.laptop} {
+    flex-direction: column;
+    align-items: stretch;
+    margin-top: 2.5rem;
+
+    img {
+      align-self: center;
+    }
   }
 `
 
 export const SuccessHeader = styled.header`
   h1 {
     ${typography.titleL}
+
+    ${media.mobile} {
+      font-size: 1.5rem;
+    }
+
     color: ${({ theme }) => theme.colors.yellowDark};
   }
 
@@ -32,9 +49,14 @@ export const DetailsCard = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  min-width: 32.875rem;
+  min-width: min(32.875rem, 100%);
   margin-top: 2.5rem;
   padding: 2.5rem;
+
+  ${media.mobile} {
+    padding: 1.5rem;
+  }
+
   border: 1px solid transparent;
   border-radius: 6px 36px;
   background:

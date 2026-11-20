@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { media } from '../../styles/breakpoints'
 import { typography } from '../../styles/typography'
 
 export const CheckoutForm = styled.form`
@@ -7,6 +8,16 @@ export const CheckoutForm = styled.form`
   justify-content: space-between;
   gap: 2rem;
   margin-top: 2.5rem;
+
+  ${media.laptop} {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 40rem;
+    margin-inline: auto;
+  }
+
+  ${media.mobile} {
+    margin-top: 1.5rem;
+  }
 
   h2 {
     ${typography.titleXS}
@@ -30,10 +41,18 @@ export const Card = styled.div`
   padding: 2.5rem;
   border-radius: 6px;
   background: ${({ theme }) => theme.colors.card};
+
+  ${media.mobile} {
+    padding: 1.5rem 1rem;
+  }
 `
 
 export const SummaryCard = styled(Card)`
   border-radius: 6px 44px;
+
+  ${media.mobile} {
+    border-radius: 6px 24px;
+  }
 `
 
 export const CartList = styled.ul`
