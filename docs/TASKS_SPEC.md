@@ -38,7 +38,7 @@
 | T-09 | Tipos `Coffee`/`CoffeeTag` + catálogo local com imagens | RF-01, RN-08 | `types/coffee.ts`, `data/coffees.ts` (imagens já em `public/coffees/*.png`) | Catálogo tipado compila; preços em centavos | `feat: add typed coffee catalog` | Concluído |
 | T-10 | `formatCurrency` (centavos → BRL) + teste UT-07 | RN-04 | `utils/formatCurrency.ts`, `tests/formatCurrency.test.ts` | Teste passa | `feat: add currency formatter` | Concluído |
 | T-11 | `Header` estático (logo, localização, botão carrinho) | RF-16 | `components/Header/` | Igual ao Figma em 1440; link do carrinho vai a `/checkout` | `feat: add header component` | Concluído |
-| T-12 | `Hero` estático (título, subtítulo, 4 benefícios, imagem) | — | `components/Hero/` | Igual ao Figma em 1440 | `feat: add home hero section` | A fazer |
+| T-12 | `Hero` estático (título, subtítulo, 4 benefícios, imagem) | — | `components/Hero/` | Igual ao Figma em 1440 | `feat: add home hero section` | Concluído |
 | T-13 | `CoffeeCard` estático + `CoffeeCatalog` com `map` | RF-01 | `components/CoffeeCard/`, `components/CoffeeCatalog/`, `pages/Home/` | Todos os cafés renderizados com `key={coffee.id}` | `feat: render coffee catalog` | A fazer |
 | T-14 | `QuantityInput` + estado local de quantidade no card (mín. 1) | RF-02, RN-01 | `components/QuantityInput/`, `components/CoffeeCard/` | − desabilitado em 1; `aria-label` nos botões | `feat: add quantity selector to coffee card` | A fazer |
 
@@ -130,3 +130,4 @@
 | T-09 | 2026-11-20 | 14 cafés tipados (`Coffee[]`), preços em centavos; tsc OK | `feat: add typed coffee catalog` |
 | T-10 | 2026-11-20 | UT-07 (3 casos) OK | `feat: add currency formatter` |
 | T-11 | 2026-11-20 | Vitest 4/4 (link do carrinho → /checkout); conferido no Chrome (logo, localização, carrinho) | `feat: add header component` |
+| T-12 | 2026-11-20 | Conferido no Chrome (título, subtítulo, 4 benefícios, imagem, fundo desfocado); Vitest 4/4 | `feat: add home hero section` |

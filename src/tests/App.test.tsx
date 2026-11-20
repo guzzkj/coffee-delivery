@@ -6,7 +6,7 @@ import { renderWithProviders } from './renderWithProviders'
 describe('App routes', () => {
   it('renders the home page at /', () => {
     renderWithProviders(<App />)
-    expect(screen.getByRole('heading', { name: 'Home' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /Encontre o café perfeito/ })).toBeInTheDocument()
   })
 
   it('renders the checkout page at /checkout', () => {
@@ -16,7 +16,7 @@ describe('App routes', () => {
 
   it('redirects unknown routes to the home page', () => {
     renderWithProviders(<App />, { route: '/rota-inexistente' })
-    expect(screen.getByRole('heading', { name: 'Home' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /Encontre o café perfeito/ })).toBeInTheDocument()
   })
 
   it('shows a header link to the cart', () => {
