@@ -62,7 +62,7 @@
 
 | ID | Objetivo | Req. | Arquivos | Critério de pronto | Commit sugerido | Status |
 |---|---|---|---|---|---|---|
-| T-21 | Layout estático do Checkout (2 colunas desktop) | RF-15 (base) | `pages/Checkout/` | Estrutura igual ao Figma | `feat: add checkout page layout` | A fazer |
+| T-21 | Layout estático do Checkout (2 colunas desktop) | RF-15 (base) | `pages/Checkout/` | Estrutura igual ao Figma | `feat: add checkout page layout` | Concluído |
 | T-22 | `CartItem` + `CartSummary` ligados ao contexto | RF-05, RF-10 | `components/CartItem/`, `components/CartSummary/` | +/−/Remover atualizam totais e badge na hora | `feat: list selected coffees in checkout` | A fazer |
 | T-23 | `EmptyCart` quando não há itens | RN-09, RF-11 | `components/EmptyCart/` | Link volta para a Home; sem botão de confirmar ativo | `feat: add empty cart state` | A fazer |
 | T-24 | `checkoutSchema` (Zod 4, mensagens com `error`; conferir API no Context7) + UT-08 | RF-08, RF-09 | `schemas/checkoutSchema.ts`, teste | Testes passam | `feat: add checkout validation schema` | A fazer |
@@ -139,3 +139,4 @@
 | T-18 | 2026-11-20 | IT-01 (2+1 Latte + 1 Cubano → badge 4); Chrome: 2 Tradicional + 1 Americano → badge 3 | `feat: show cart units in header` |
 | T-19 | 2026-11-20 | UT-06: 29,70 + 3,50 = 33,20 em centavos; taxa em uma constante; Vitest OK | `feat: add cart total calculations` |
 | T-20 | 2026-11-20 | UT-10 (vazio, JSON corrompido, id/qtd inválidos) + remontagem mantém carrinho; Chrome: 2 Mocaccino → F5 → badge 2 | `feat: persist cart in local storage` |
+| T-21 | 2026-11-20 | Chrome: 2 colunas (Complete seu pedido / Cafés selecionados) com cards de endereço e pagamento; Vitest OK | `feat: add checkout page layout` |

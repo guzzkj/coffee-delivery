@@ -11,7 +11,7 @@ describe('App routes', () => {
 
   it('renders the checkout page at /checkout', () => {
     renderWithProviders(<App />, { route: '/checkout' })
-    expect(screen.getByRole('heading', { name: 'Checkout' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Complete seu pedido' })).toBeInTheDocument()
   })
 
   it('redirects unknown routes to the home page', () => {
