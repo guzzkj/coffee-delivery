@@ -1,6 +1,7 @@
 import { CurrencyDollar, MapPinLine } from '@phosphor-icons/react'
 import { CartItem } from '../../components/CartItem'
 import { CartSummary } from '../../components/CartSummary'
+import { EmptyCart } from '../../components/EmptyCart'
 import { useCart } from '../../hooks/useCart'
 import { Card, CardHeader, CartList, CheckoutForm, Column, SummaryCard } from './styles'
 
@@ -14,6 +15,11 @@ export function Checkout() {
     decrementItem,
     removeItem,
   } = useCart()
+
+  // RN-09 / RF-11: sem itens não há o que confirmar
+  if (items.length === 0) {
+    return <EmptyCart />
+  }
 
   return (
     <CheckoutForm noValidate>

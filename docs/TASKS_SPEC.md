@@ -64,7 +64,7 @@
 |---|---|---|---|---|---|---|
 | T-21 | Layout estático do Checkout (2 colunas desktop) | RF-15 (base) | `pages/Checkout/` | Estrutura igual ao Figma | `feat: add checkout page layout` | Concluído |
 | T-22 | `CartItem` + `CartSummary` ligados ao contexto | RF-05, RF-10 | `components/CartItem/`, `components/CartSummary/` | +/−/Remover atualizam totais e badge na hora | `feat: list selected coffees in checkout` | Concluído |
-| T-23 | `EmptyCart` quando não há itens | RN-09, RF-11 | `components/EmptyCart/` | Link volta para a Home; sem botão de confirmar ativo | `feat: add empty cart state` | A fazer |
+| T-23 | `EmptyCart` quando não há itens | RN-09, RF-11 | `components/EmptyCart/` | Link volta para a Home; sem botão de confirmar ativo | `feat: add empty cart state` | Concluído |
 | T-24 | `checkoutSchema` (Zod 4, mensagens com `error`; conferir API no Context7) + UT-08 | RF-08, RF-09 | `schemas/checkoutSchema.ts`, teste | Testes passam | `feat: add checkout validation schema` | A fazer |
 | T-25 | `DeliveryAddressForm` com RHF + `zodResolver` (sem API ainda) | RF-08, RF-11 | `components/DeliveryAddressForm/`, `pages/Checkout/` | Erros por campo com `aria-invalid`/`aria-describedby` | `feat: add delivery address form` | A fazer |
 | T-26 | `services/viaCep.ts` + UT-09 com fetch mockado | RN-07 | `services/viaCep.ts`, teste | Trata sucesso, não encontrado e falha | `feat: add cep lookup service` | A fazer |
@@ -141,3 +141,4 @@
 | T-20 | 2026-11-20 | UT-10 (vazio, JSON corrompido, id/qtd inválidos) + remontagem mantém carrinho; Chrome: 2 Mocaccino → F5 → badge 2 | `feat: persist cart in local storage` |
 | T-21 | 2026-11-20 | Chrome: 2 colunas (Complete seu pedido / Cafés selecionados) com cards de endereço e pagamento; Vitest OK | `feat: add checkout page layout` |
 | T-22 | 2026-11-20 | Vitest: totais 29,70/3,50/33,20; +/−/Remover atualizam total e badge; − trava em 1. Chrome igual ao Figma | `feat: list selected coffees in checkout` |
+| T-23 | 2026-11-20 | IT-02: /checkout vazio mostra EmptyCart, link "Ver cafés" → / e sem botão Confirmar | `feat: add empty cart state` |
