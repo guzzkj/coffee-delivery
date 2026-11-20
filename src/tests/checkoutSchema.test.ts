@@ -40,7 +40,7 @@ describe('checkoutSchema (UT-08)', () => {
   })
 
   it('rejects an invalid UF', () => {
-    expect(errorFor({ ...validData, state: 'RGS' }, 'state')).toBe('Informe a UF com 2 letras')
+    expect(errorFor({ ...validData, state: 'RGS' }, 'state')).toBe('UF inválida')
   })
 
   it('requires a payment method', () => {

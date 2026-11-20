@@ -1,8 +1,12 @@
+import { zodResolver } from '@hookform/resolvers/zod'
 import { CurrencyDollar, MapPinLine } from '@phosphor-icons/react'
+import { useForm } from 'react-hook-form'
 import { CartItem } from '../../components/CartItem'
 import { CartSummary } from '../../components/CartSummary'
+import { DeliveryAddressForm } from '../../components/DeliveryAddressForm'
 import { EmptyCart } from '../../components/EmptyCart'
 import { useCart } from '../../hooks/useCart'
+import { checkoutSchema, type CheckoutFormData } from '../../schemas/checkoutSchema'
 import { Card, CardHeader, CartList, CheckoutForm, Column, SummaryCard } from './styles'
 
 export function Checkout() {
@@ -16,13 +20,36 @@ export function Checkout() {
     removeItem,
   } = useCart()
 
+  // React Hook Form + Zod: o resolver valida todos os campos com o checkoutSchema
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(checkoutSchema),
+    defaultValues: {
+      cep: '',
+      street: '',
+      number: '',
+      complement: '',
+      neighborhood: '',
+      city: '',
+      state: '',
+    },
+  })
+
+  // Só é chamada quando o formulário passa na validação (a confirmação vem na T-29)
+  function handleConfirmOrder(data: CheckoutFormData) {
+    void data
+  }
+
   // RN-09 / RF-11: sem itens não há o que confirmar
   if (items.length === 0) {
     return <EmptyCart />
   }
 
   return (
-    <CheckoutForm noValidate>
+    <CheckoutForm noValidate onSubmit={handleSubmit(handleConfirmOrder)}>
       <Column aria-labelledby="checkout-title">
         <h2 id="checkout-title">Complete seu pedido</h2>
 
@@ -34,6 +61,8 @@ export function Checkout() {
               <p>Informe o endereço onde deseja receber seu pedido</p>
             </div>
           </CardHeader>
+
+          <DeliveryAddressForm register={register} errors={errors} />
         </Card>
 
         <Card>

@@ -8,7 +8,7 @@ export const checkoutSchema = z.object({
   complement: z.string().trim().optional(),
   neighborhood: z.string().trim().min(1, { error: 'Informe o bairro' }),
   city: z.string().trim().min(1, { error: 'Informe a cidade' }),
-  state: z.string().trim().regex(/^[A-Za-z]{2}$/, { error: 'Informe a UF com 2 letras' }),
+  state: z.string().trim().regex(/^[A-Za-z]{2}$/, { error: 'UF inválida' }),
   paymentMethod: z.enum(['credit', 'debit', 'money'], { error: 'Selecione a forma de pagamento' }),
 })
 
