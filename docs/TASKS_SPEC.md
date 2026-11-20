@@ -21,7 +21,7 @@
 | T-02 | Criar repo GitHub público `coffee-delivery`, branch `dev`, push | — | — | `main` e `dev` no remoto | — | Concluído |
 | T-03 | Remover boilerplate do template e criar pastas do TECH_SPEC §3 | — | `src/App.tsx`, `src/index.css`, pastas | App mostra "Coffee Delivery"; sem arquivos do demo | `chore: remove vite template boilerplate` | Concluído |
 | T-04 | Configurar Vitest + Testing Library + jsdom + script `test` | — | `vite.config.ts`, `src/tests/setup.ts`, `package.json` | `npm run test -- --run` passa com 1 teste de exemplo | `chore: configure vitest` | Concluído |
-| T-05 | Instalar `react-router`; rotas `/`, `/checkout`, `/success`, `*` com páginas placeholder e `PageLayout` | RF-07 | `main.tsx`, `App.tsx`, `pages/Home|Checkout|Success/`, `components/PageLayout/` | Navegação sem reload; rota inválida → `/` | `feat: add app routes` | A fazer |
+| T-05 | Instalar `react-router`; rotas `/`, `/checkout`, `/success`, `*` com páginas placeholder e `PageLayout` | RF-07 | `main.tsx`, `App.tsx`, `pages/Home|Checkout|Success/`, `components/PageLayout/` | Navegação sem reload; rota inválida → `/` | `feat: add app routes` | Concluído |
 | T-06 | styled-components: `themes.ts` (tokens claro/escuro), `styled.d.ts`, `GlobalStyle`, fontes Baloo 2 + Roboto | RF-14 (base) | `styles/themes/light.ts`, `styles/themes/dark.ts`, `styles/global.ts`, `styles/styled.d.ts`, `index.html`, `main.tsx` | Tema claro aplicado; fontes carregando; tipagem do tema sem `any` | `style: add theme tokens and global styles` | A fazer |
 
 ## Fase 4 — Branding (`feature/branding`)
@@ -123,3 +123,4 @@
 | T-02 | 2026-11-20 | Repo https://github.com/guzzkj/coffee-delivery (público); `origin/main` e `origin/dev` com upstream; `git fetch` conferido | — (criado pelo Gustavo) |
 | T-03 | 2026-11-20 | `npm run build` OK; `npm run lint` (oxlint) sem avisos; demo do Vite removida | `chore: remove vite template boilerplate` |
 | T-04 | 2026-11-20 | `npm run test -- --run` 1/1 OK; build + lint OK | `chore: configure vitest` |
+| T-05 | 2026-11-20 | Vitest 3/3 (rotas `/`, `/checkout`, `*` → `/`); build + lint OK; react-router 8.5.2 | `feat: add app routes` |
