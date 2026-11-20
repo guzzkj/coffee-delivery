@@ -48,7 +48,7 @@
 |---|---|---|---|---|---|---|
 | T-15 | Tipos de carrinho/pedido + `cartReducer` (ADD, INCREMENT, DECREMENT, REMOVE, CONFIRM_ORDER, CLEAR) + testes UT-01..05 | RF-03, RF-05, RN-01, RN-02 | `types/cart.ts`, `types/order.ts`, `reducers/*`, `tests/cartReducer.test.ts` | Testes passam; nenhuma mutação | `feat: add cart reducer` | Concluído |
 | T-16 | `CartContext` + `CartProvider` + `useCart` | RF-03 | `contexts/CartContext.tsx`, `hooks/useCart.ts`, `main.tsx` | `useCart` fora do provider lança erro claro | `feat: add cart context` | Concluído |
-| T-17 | Botão do card adiciona ao carrinho e reseta quantidade para 1 | RF-03, RN-02 | `components/CoffeeCard/` | Re-adicionar soma (verificado via React DevTools/Playwright) | `feat: add coffee to cart` | A fazer |
+| T-17 | Botão do card adiciona ao carrinho e reseta quantidade para 1 | RF-03, RN-02 | `components/CoffeeCard/` | Re-adicionar soma (verificado via React DevTools/Playwright) | `feat: add coffee to cart` | Concluído |
 | T-18 | `CartBadge` no Header com soma das unidades | RF-04 | `components/CartBadge/`, `components/Header/` | 2+1 do mesmo café → "3"; oculto em 0 | `feat: show cart units in header` | A fazer |
 | T-19 | `cartCalculations` (subtotal, taxa fixa, total) + UT-06 | RF-10, RN-03, RN-04 | `utils/cartCalculations.ts`, teste | Testes passam; taxa em uma constante só | `feat: add cart total calculations` | A fazer |
 
@@ -135,3 +135,4 @@
 | T-14 | 2026-11-20 | Vitest: começa em 1, − desabilitado em 1, + incrementa; Chrome: clique no + do Latte → 2 | `feat: add quantity selector to coffee card` |
 | T-15 | 2026-11-20 | UT-01..UT-05 OK (14/14); estado original intacto (structuredClone) | `feat: add cart reducer` |
 | T-16 | 2026-11-20 | Vitest 15/15 (useCart fora do provider lança erro); lint sem avisos (contexto em arquivo separado p/ Fast Refresh) | `feat: add cart context` |
+| T-17 | 2026-11-20 | Vitest: +1 e adicionar → latte:2, seletor volta a 1, re-adicionar → latte:3 | `feat: add coffee to cart` |
