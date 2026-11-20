@@ -19,6 +19,7 @@ export const darkTheme: AppTheme = {
     yellowLight: '#3A2E10',
     yellow: '#DBAC2C',
     yellowDark: '#F0C14B',
+    yellowText: '#F0C14B',
 
     purpleLight: '#2E2350',
     purple: '#A78BFA',

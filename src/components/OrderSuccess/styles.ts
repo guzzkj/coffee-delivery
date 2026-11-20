@@ -64,5 +64,5 @@ export const DetailIcon = styled.span<DetailIconProps>`
   height: 2rem;
   border-radius: 50%;
   background: ${({ theme, $color }) => theme.colors[$color]};
-  color: ${({ theme }) => theme.colors.background};
+  color: ${({ theme, $color }) => ($color === 'yellow' ? theme.colors.onAccent : theme.colors.background)};
 `
