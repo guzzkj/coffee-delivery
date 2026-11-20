@@ -40,7 +40,7 @@
 | T-11 | `Header` estático (logo, localização, botão carrinho) | RF-16 | `components/Header/` | Igual ao Figma em 1440; link do carrinho vai a `/checkout` | `feat: add header component` | Concluído |
 | T-12 | `Hero` estático (título, subtítulo, 4 benefícios, imagem) | — | `components/Hero/` | Igual ao Figma em 1440 | `feat: add home hero section` | Concluído |
 | T-13 | `CoffeeCard` estático + `CoffeeCatalog` com `map` | RF-01 | `components/CoffeeCard/`, `components/CoffeeCatalog/`, `pages/Home/` | Todos os cafés renderizados com `key={coffee.id}` | `feat: render coffee catalog` | Concluído |
-| T-14 | `QuantityInput` + estado local de quantidade no card (mín. 1) | RF-02, RN-01 | `components/QuantityInput/`, `components/CoffeeCard/` | − desabilitado em 1; `aria-label` nos botões | `feat: add quantity selector to coffee card` | A fazer |
+| T-14 | `QuantityInput` + estado local de quantidade no card (mín. 1) | RF-02, RN-01 | `components/QuantityInput/`, `components/CoffeeCard/` | − desabilitado em 1; `aria-label` nos botões | `feat: add quantity selector to coffee card` | Concluído |
 
 ## Fase 6 — Carrinho (`feature/cart`)
 
@@ -132,3 +132,4 @@
 | T-11 | 2026-11-20 | Vitest 4/4 (link do carrinho → /checkout); conferido no Chrome (logo, localização, carrinho) | `feat: add header component` |
 | T-12 | 2026-11-20 | Conferido no Chrome (título, subtítulo, 4 benefícios, imagem, fundo desfocado); Vitest 4/4 | `feat: add home hero section` |
 | T-13 | 2026-11-20 | Vitest: 14 cards com nome/descrição/tags/preço; Chrome sem scroll horizontal (scrollWidth = clientWidth) | `feat: render coffee catalog` |
+| T-14 | 2026-11-20 | Vitest: começa em 1, − desabilitado em 1, + incrementa; Chrome: clique no + do Latte → 2 | `feat: add quantity selector to coffee card` |

@@ -55,12 +55,19 @@ export const CardFooter = styled.div`
 `
 
 export const Price = styled.p`
+  white-space: nowrap;
   ${typography.textS}
   color: ${({ theme }) => theme.colors.text};
 
   strong {
     ${typography.titleM}
   }
+`
+
+export const CardActions = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 `
 
 export const AddButton = styled.button`
