@@ -19,7 +19,7 @@
 |---|---|---|---|---|---|---|
 | T-01 | Scaffold Vite 8 `react-ts` na pasta atual, `git init`, `.gitignore`, primeiro commit com docs | RF-07 | `package.json`, `vite.config.ts`, `tsconfig*`, `index.html`, `src/*`, `.gitignore` | `npm run dev` abre; `npm ls vite` = 8.x; autoria conferida | `chore: initialize coffee delivery project` | Concluído |
 | T-02 | Criar repo GitHub público `coffee-delivery`, branch `dev`, push | — | — | `main` e `dev` no remoto | — | Concluído |
-| T-03 | Remover boilerplate do template e criar pastas do TECH_SPEC §3 | — | `src/App.tsx`, `src/index.css`, pastas | App mostra "Coffee Delivery"; sem arquivos do demo | `chore: remove vite template boilerplate` | A fazer |
+| T-03 | Remover boilerplate do template e criar pastas do TECH_SPEC §3 | — | `src/App.tsx`, `src/index.css`, pastas | App mostra "Coffee Delivery"; sem arquivos do demo | `chore: remove vite template boilerplate` | Concluído |
 | T-04 | Configurar Vitest + Testing Library + jsdom + script `test` | — | `vite.config.ts`, `src/tests/setup.ts`, `package.json` | `npm run test -- --run` passa com 1 teste de exemplo | `chore: configure vitest` | A fazer |
 | T-05 | Instalar `react-router`; rotas `/`, `/checkout`, `/success`, `*` com páginas placeholder e `PageLayout` | RF-07 | `main.tsx`, `App.tsx`, `pages/Home|Checkout|Success/`, `components/PageLayout/` | Navegação sem reload; rota inválida → `/` | `feat: add app routes` | A fazer |
 | T-06 | styled-components: `themes.ts` (tokens claro/escuro), `styled.d.ts`, `GlobalStyle`, fontes Baloo 2 + Roboto | RF-14 (base) | `styles/themes/light.ts`, `styles/themes/dark.ts`, `styles/global.ts`, `styles/styled.d.ts`, `index.html`, `main.tsx` | Tema claro aplicado; fontes carregando; tipagem do tema sem `any` | `style: add theme tokens and global styles` | A fazer |
@@ -121,3 +121,4 @@
 | T-00 | 2026-11-19 | — (documentação) | incluído em `f06a3a1` |
 | T-01 | 2026-11-19 | `npm run build` OK; `npm ls vite` = 8.3.8; `@vitejs/plugin-react` 6.3.0; autoria conferida | `f06a3a1` |
 | T-02 | 2026-11-20 | Repo https://github.com/guzzkj/coffee-delivery (público); `origin/main` e `origin/dev` com upstream; `git fetch` conferido | — (criado pelo Gustavo) |
+| T-03 | 2026-11-20 | `npm run build` OK; `npm run lint` (oxlint) sem avisos; demo do Vite removida | `chore: remove vite template boilerplate` |
