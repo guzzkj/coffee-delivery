@@ -5,8 +5,8 @@
 
 Ferramentas:
 - **Claude Code** (assistente de desenvolvimento) — análise, SPECs, arquitetura, implementação em etapas, revisão, testes.
-- **Context7 MCP** — previsto para documentação atualizada. **Não estava conectado** no ambiente usado; a API foi conferida nas declarações de tipo (`.d.ts`) dos pacotes instalados (ver Interação 03). Pendente: 1 consulta real feita pelo Gustavo para evidência.
-- **Playwright MCP** — previsto para validação. **Não estava disponível**; a validação foi feita com a extensão de navegador do Claude (Chrome) e prints gerados com Chrome headless via DevTools Protocol (ver Interação 04).
+- **Context7 MCP** — documentação atualizada. Não estava conectado durante a implementação (a API foi conferida nos `.d.ts` dos pacotes); a consulta real foi feita depois, em 2026-11-20, e confirmou a solução adotada (ver Interação 03, `docs/screenshots/context7.png`).
+- **Playwright MCP** — validação da interface. Durante a implementação a validação foi feita com a extensão Claude in Chrome e Chrome headless; depois da entrega o roteiro mínimo do AGENTS.md §7.4 foi repetido com o Playwright MCP (ver Interação 04, `docs/screenshots/playwright-mcp-*.png`).
 - **Claude Code** também gerou a logo em SVG (D-07) — ver `docs/BRANDING.md`.
 
 ---
@@ -48,7 +48,7 @@ Ferramentas:
 | Direitos de uso | Criação original para o projeto, sem marcas de terceiros |
 | Evidência | `src/assets/brand/*`, `public/favicon.svg`, `docs/BRANDING.md` |
 
-## Interação 03 — Conferência de API (no lugar do Context7)
+## Interação 03 — Conferência de API e consulta ao Context7
 
 | Campo | Registro |
 |---|---|
@@ -58,9 +58,11 @@ Ferramentas:
 | Resposta (resumo) | No Zod 4 o parâmetro é `error` (o `errorMap` do Zod 3 saiu); `zodResolver` vem de `@hookform/resolvers/zod`; tipos de entrada/saída com `z.input`/`z.output`. Para observar o CEP, `useWatch({ control, name })` em vez de `watch()` (o lint do React Compiler acusava `incompatible-library`). |
 | Como foi aplicada | `src/schemas/checkoutSchema.ts`, `src/pages/Checkout/index.tsx` |
 | Evidência | Commits `feat: add delivery address form`, `feat: autofill address from cep`; divergência registrada no TECH_SPEC §14 |
-| Observação | Context7 MCP não estava conectado na sessão. A evidência de uma consulta real ao Context7 deve ser adicionada aqui pelo Gustavo (print). |
+| Consulta Context7 (2026-11-20) | Prompt: *"Como usar `useWatch` do React Hook Form 7 para observar só o campo CEP? use context7"*. Chamadas: `resolve-library-id` ("React Hook Form" → `/react-hook-form/documentation`, reputação High) e `query-docs` ("useWatch with control and name to observe a single field value…", TypeScript). |
+| Resultado da consulta | A documentação mostra `useWatch({ control, name })` assinando um campo e re-renderizando só no nível do hook; regras: retorna o valor atual no primeiro render, a ordem importa (assinatura antes do `setValue`) e o resultado é feito para a renderização, não para dependência de `useEffect`. Confere com `src/pages/Checkout/index.tsx:50` (`const cep = useWatch({ control, name: 'cep' })`, react-hook-form 7.92.0) — nenhuma mudança de código foi necessária. |
+| Observação | Durante a implementação o Context7 não estava conectado; a consulta acima foi feita depois e serve de evidência. Print: `docs/screenshots/context7.png`. |
 
-## Interação 04 — Validação da interface (no lugar do Playwright MCP)
+## Interação 04 — Validação da interface (Claude in Chrome e Playwright MCP)
 
 | Campo | Registro |
 |---|---|
@@ -69,6 +71,8 @@ Ferramentas:
 | Roteiro | Cada task com UI: abrir `localhost`, interagir (adicionar, quantidade, remover, CEP real na ViaCEP, pagamento, confirmar), conferir console, testar 320/390/768/1440 (iframes de largura fixa) e o tema escuro. Fluxo completo só com teclado na T-36. |
 | Resultado | Sem rolagem horizontal; checkout em 1 coluna abaixo de 1024 px; foco visível; erro do formulário foca o primeiro campo inválido; CEP 01310-100 preenche Avenida Paulista/Bela Vista/São Paulo/SP. Achados corrigidos: preço vazando do card em 320 px (T-35) e linha vazia do status do CEP no mobile. |
 | Evidência | `docs/screenshots/*.png` (12 prints: 3 telas × claro/escuro × desktop/mobile); registro de testes no `docs/TASKS_SPEC.md` |
+| Playwright MCP (2026-11-20) | Roteiro do AGENTS.md §7.4 no dev server (`localhost:5199`), `localStorage` limpo. **1440×900:** Home carrega; Latte ×2 + Expresso Tradicional → badge "3 itens"; checkout com totais R$ 29,70 + R$ 3,50 = R$ 33,20; CEP 01310100 (digitado) preenche Avenida Paulista / Bela Vista / São Paulo / SP pela ViaCEP; confirmar sem número e sem pagamento mostra "Informe o número" e "Selecione a forma de pagamento" e foca o campo Número; com número 1000 + Cartão de Crédito vai para `/success` com endereço, previsão e pagamento corretos; carrinho volta a "vazio". **390×844:** reload em `/success` mantém o pedido; tema escuro ativado (`aria-pressed="true"`) persiste após reload (`@coffee-delivery:theme-1.0.0 = "dark"`); checkout em 1 coluna. Sem rolagem horizontal em nenhuma tela; console do app sem erros nem avisos. |
+| Prints Playwright MCP | `docs/screenshots/playwright-mcp-home-1440.png`, `playwright-mcp-checkout-1440.png`, `playwright-mcp-success-1440.png`, `playwright-mcp-home-dark-390.png`, `playwright-mcp-checkout-dark-390.png` |
 
 ## Interação 05 — Implementação guiada por lint e testes (hook do CEP)
 

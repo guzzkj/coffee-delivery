@@ -25,12 +25,12 @@
 - Trocar a linha `_adicionar o link da Vercel após o primeiro deploy_` em `README.md` pelo link real.
 - Commit sugerido: `docs: add deployed app link` (em `dev`, depois merge `--no-ff` em `main`).
 
-### P-03 — Evidência real do Context7
+### P-03 — Evidência real do Context7 — ✅ concluída (`docs/screenshots/context7.png`, Interação 03)
 - Na sessão anterior o Context7 MCP **não estava conectado**. O enunciado e o AGENTS.md §7.3 pedem evidência de uma consulta real.
 - Fazer 1 consulta com `use context7` (ex.: *"Como usar `useWatch` do React Hook Form 7? use context7"*), salvar um print em `docs/screenshots/context7.png`.
 - Preencher a observação da **Interação 03** em `docs/AI_USAGE.md` (hoje diz que a evidência está pendente).
 
-### P-04 — Evidência do Playwright MCP (recomendado)
+### P-04 — Evidência do Playwright MCP (recomendado) — ✅ concluída (`docs/screenshots/playwright-mcp-*.png`, Interação 04)
 - O Playwright MCP também não estava disponível; a validação foi feita com Claude in Chrome e Chrome headless.
 - Se o MCP estiver configurado na nova sessão: rodar o roteiro mínimo do AGENTS.md §7.4 (1440×900 e 390×844, console sem erros, fluxo completo) e adicionar o resultado/print na **Interação 04** do `docs/AI_USAGE.md`.
 

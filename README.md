@@ -101,7 +101,7 @@ Logo original (copo para viagem com pin de localização) criada com IA em SVG, 
 
 ## Uso de IA
 
-Desenvolvido com **Claude Code** como assistente: análise do enunciado, SPECs, implementação em tasks pequenas, testes, revisão de acessibilidade e contraste. Cada interação relevante está em [`docs/AI_USAGE.md`](docs/AI_USAGE.md), incluindo o que **não** foi decidido pela IA. Context7 MCP e Playwright MCP não estavam disponíveis no ambiente; a conferência de API e a validação visual foram feitas por outros meios, registrados no mesmo arquivo.
+Desenvolvido com **Claude Code** como assistente: análise do enunciado, SPECs, implementação em tasks pequenas, testes, revisão de acessibilidade e contraste. Cada interação relevante está em [`docs/AI_USAGE.md`](docs/AI_USAGE.md), incluindo o que **não** foi decidido pela IA. Durante a implementação o Context7 MCP e o Playwright MCP não estavam disponíveis (a conferência de API e a validação visual foram feitas por outros meios); depois da entrega foram feitas uma consulta real ao Context7 e a validação completa com o Playwright MCP, com prints em `docs/screenshots/` (Interações 03 e 04).
 
 ## Deploy
 
