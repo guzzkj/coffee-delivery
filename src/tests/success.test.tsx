@@ -24,7 +24,7 @@ const order: Order = {
 }
 
 describe('Success page (RF-12, RF-13)', () => {
-  it('IT-04: shows address, delivery estimate and payment from the saved order, even with an empty cart', () => {
+  it('shows address, delivery estimate and payment from the saved order, even with an empty cart', () => {
     localStorage.setItem(STORAGE_KEYS.lastOrder, JSON.stringify(order))
     renderWithProviders(<App />, { route: '/success' })
 

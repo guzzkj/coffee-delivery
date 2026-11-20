@@ -13,6 +13,8 @@ type CoffeeCardProps = {
 export function CoffeeCard({ coffee }: CoffeeCardProps) {
   // Quantidade escolhida antes de adicionar (RF-02): estado local do card
   const [quantity, setQuantity] = useState(1)
+  // Mensagem lida pelo leitor de tela depois de adicionar (aria-live)
+  const [feedback, setFeedback] = useState('')
   const { addItem } = useCart()
 
   function handleIncrement() {
@@ -25,6 +27,7 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
 
   function handleAddToCart() {
     addItem(coffee.id, quantity)
+    setFeedback(`${quantity} ${coffee.name} adicionado ao carrinho`)
     setQuantity(1) // volta para 1 depois de adicionar
   }
 
@@ -63,6 +66,10 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
           </AddButton>
         </CardActions>
       </CardFooter>
+
+      <p className="sr-only" aria-live="polite">
+        {feedback}
+      </p>
     </CardContainer>
   )
 }
