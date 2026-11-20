@@ -35,7 +35,7 @@
 
 | ID | Objetivo | Req. | Arquivos | Critério de pronto | Commit sugerido | Status |
 |---|---|---|---|---|---|---|
-| T-09 | Tipos `Coffee`/`CoffeeTag` + catálogo local com imagens | RF-01, RN-08 | `types/coffee.ts`, `data/coffees.ts`, `assets/coffees/*` | Catálogo tipado compila; preços em centavos | `feat: add typed coffee catalog` | A fazer |
+| T-09 | Tipos `Coffee`/`CoffeeTag` + catálogo local com imagens | RF-01, RN-08 | `types/coffee.ts`, `data/coffees.ts` (imagens já em `public/coffees/*.png`) | Catálogo tipado compila; preços em centavos | `feat: add typed coffee catalog` | A fazer |
 | T-10 | `formatCurrency` (centavos → BRL) + teste UT-07 | RN-04 | `utils/formatCurrency.ts`, `tests/formatCurrency.test.ts` | Teste passa | `feat: add currency formatter` | A fazer |
 | T-11 | `Header` estático (logo, localização, botão carrinho) | RF-16 | `components/Header/` | Igual ao Figma em 1440; link do carrinho vai a `/checkout` | `feat: add header component` | A fazer |
 | T-12 | `Hero` estático (título, subtítulo, 4 benefícios, imagem) | — | `components/Hero/` | Igual ao Figma em 1440 | `feat: add home hero section` | A fazer |

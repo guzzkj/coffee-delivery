@@ -129,7 +129,7 @@ export type Coffee = {
   description: string
   tags: CoffeeTag[]
   priceInCents: number      // RN-04: sempre inteiro em centavos
-  image: string             // import do asset
+  image: string             // caminho em public/, ex.: "/coffees/latte.png"
 }
 
 // cart.ts
