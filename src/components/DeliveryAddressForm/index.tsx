@@ -1,16 +1,26 @@
 import type { FieldErrors, UseFormRegister } from 'react-hook-form'
 import type { CheckoutFormInput } from '../../schemas/checkoutSchema'
 import { TextInput } from '../TextInput'
-import { AddressGrid } from './styles'
+import { AddressGrid, CepStatus } from './styles'
 
 type DeliveryAddressFormProps = {
   register: UseFormRegister<CheckoutFormInput>
   errors: FieldErrors<CheckoutFormInput>
+  isLoadingCep: boolean
+  cepError: string | null
+  cepFound: boolean
 }
 
-export function DeliveryAddressForm({ register, errors }: DeliveryAddressFormProps) {
+export function DeliveryAddressForm({ register, errors, isLoadingCep, cepError, cepFound }: DeliveryAddressFormProps) {
   return (
     <AddressGrid>
+      {/* aria-live anuncia o resultado da consulta do CEP para leitores de tela */}
+      <CepStatus className="cep-status" aria-live="polite" $isError={Boolean(cepError)}>
+        {isLoadingCep && 'Buscando endereço...'}
+        {cepError}
+        {cepFound && 'Endereço encontrado. Informe o número.'}
+      </CepStatus>
+
       <TextInput
         id="cep"
         label="CEP"

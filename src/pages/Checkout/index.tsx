@@ -1,11 +1,12 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { CurrencyDollar, MapPinLine } from '@phosphor-icons/react'
-import { useForm } from 'react-hook-form'
+import { useForm, useWatch } from 'react-hook-form'
 import { CartItem } from '../../components/CartItem'
 import { CartSummary } from '../../components/CartSummary'
 import { DeliveryAddressForm } from '../../components/DeliveryAddressForm'
 import { EmptyCart } from '../../components/EmptyCart'
 import { useCart } from '../../hooks/useCart'
+import { useCepLookup } from '../../hooks/useCepLookup'
 import { checkoutSchema, type CheckoutFormData } from '../../schemas/checkoutSchema'
 import { Card, CardHeader, CartList, CheckoutForm, Column, SummaryCard } from './styles'
 
@@ -24,6 +25,9 @@ export function Checkout() {
   const {
     register,
     handleSubmit,
+    control,
+    setValue,
+    setFocus,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(checkoutSchema),
@@ -37,6 +41,10 @@ export function Checkout() {
       state: '',
     },
   })
+
+  // Observa o CEP digitado e preenche o endereço pela ViaCEP
+  const cep = useWatch({ control, name: 'cep' })
+  const { isLoadingCep, cepError, cepFound } = useCepLookup({ cep, setValue, setFocus })
 
   // Só é chamada quando o formulário passa na validação (a confirmação vem na T-29)
   function handleConfirmOrder(data: CheckoutFormData) {
@@ -62,7 +70,13 @@ export function Checkout() {
             </div>
           </CardHeader>
 
-          <DeliveryAddressForm register={register} errors={errors} />
+          <DeliveryAddressForm
+            register={register}
+            errors={errors}
+            isLoadingCep={isLoadingCep}
+            cepError={cepError}
+            cepFound={cepFound}
+          />
         </Card>
 
         <Card>
