@@ -5,6 +5,7 @@ import { CartItem } from '../../components/CartItem'
 import { CartSummary } from '../../components/CartSummary'
 import { DeliveryAddressForm } from '../../components/DeliveryAddressForm'
 import { EmptyCart } from '../../components/EmptyCart'
+import { PaymentMethodSelector } from '../../components/PaymentMethodSelector'
 import { useCart } from '../../hooks/useCart'
 import { useCepLookup } from '../../hooks/useCepLookup'
 import { checkoutSchema, type CheckoutFormData } from '../../schemas/checkoutSchema'
@@ -87,6 +88,8 @@ export function Checkout() {
               <p>O pagamento é feito na entrega. Escolha a forma que deseja pagar</p>
             </div>
           </CardHeader>
+
+          <PaymentMethodSelector register={register} error={errors.paymentMethod?.message} />
         </Card>
       </Column>
 
