@@ -3,6 +3,7 @@ import { Link } from 'react-router'
 import { useCart } from '../../hooks/useCart'
 import { CartBadge } from '../CartBadge'
 import { Logo } from '../Logo'
+import { ThemeToggle } from '../ThemeToggle'
 import { Actions, CartLink, HeaderContainer, HeaderContent, Location } from './styles'
 
 export function Header() {
@@ -25,6 +26,8 @@ export function Header() {
             <MapPin size={22} weight="fill" aria-hidden />
             Porto Alegre, RS
           </Location>
+
+          <ThemeToggle />
 
           <CartLink to="/checkout" aria-label={cartLabel}>
             <ShoppingCart size={22} weight="fill" aria-hidden />
