@@ -100,8 +100,8 @@
 
 | ID | Objetivo | Req. | Arquivos | Critério de pronto | Commit sugerido | Status |
 |---|---|---|---|---|---|---|
-| T-39 | Configurar deploy (Vercel) com rewrite SPA | Entrega | `vercel.json` | URL pública funcionando, inclusive F5 em `/checkout` | `chore: configure vercel deploy` | A fazer |
-| T-40 | README final (stack/versões, scripts, decisões, prints, Figma, branding, IA, link) + AI_USAGE completo | Entrega | `README.md`, `docs/AI_USAGE.md` | Checklist §10 do enunciado completo | `docs: finalize readme and ai usage` | A fazer |
+| T-39 | Configurar deploy (Vercel) com rewrite SPA | Entrega | `vercel.json` | URL pública funcionando, inclusive F5 em `/checkout` | `chore: configure vercel deploy` | Concluído |
+| T-40 | README final (stack/versões, scripts, decisões, prints, Figma, branding, IA, link) + AI_USAGE completo | Entrega | `README.md`, `docs/AI_USAGE.md` | Checklist §10 do enunciado completo | `docs: finalize readme and ai usage` | Concluído |
 | T-41 | Merge `dev` → `main` (`--no-ff`) com build + Playwright aprovados | Entrega | — | `main` publicada = versão entregue | `chore: merge dev into main` | A fazer |
 
 ## Opcionais (somente após T-41 e com aprovação)
@@ -157,3 +157,5 @@
 | T-36 | 2026-11-20 | Vitest a11y: skip link 1º Tab, aria-live ao adicionar, título + foco no main ao navegar. Chrome só teclado: skip link → +/adicionar → carrinho → submit vazio foca CEP inválido → CEP real foca Número → radio com espaço → confirmar → sucesso com foco no main | `fix: improve accessibility across pages` |
 | T-37 | 2026-11-20 | 56 testes / 21 arquivos verdes. IT-01 cartBadge, IT-02 App (carrinho vazio), IT-03 addressForm, IT-04 fullFlow (Home→checkout→CEP→sucesso→reload), IT-05 theme | `test: cover main user flows` |
 | T-38 | 2026-11-20 | 12 prints em docs/screenshots (Home/Checkout/Sucesso × claro/escuro × 1440×900/390×844) via Chrome headless + DevTools Protocol (Playwright MCP indisponível na sessão); validação interativa feita no Chrome nas tasks anteriores | `docs: add app screenshots` |
+| T-39 | 2026-11-20 | vercel.json com rewrite /(.*) → /index.html (F5 em /checkout e /success). Build de produção + vite preview: / e /checkout 200. Publicação depende da conta Vercel do Gustavo (importar repo) | `chore: configure vercel deploy` |
+| T-40 | 2026-11-20 | README: objetivo, funcionalidades, versões, scripts, arquitetura, decisões, testes, prints, branding, IA, deploy. AI_USAGE: 6 interações com evidência; Context7/Playwright MCP indisponíveis registrados com honestidade | `docs: finalize readme and ai usage` |
