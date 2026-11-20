@@ -67,7 +67,7 @@
 | T-23 | `EmptyCart` quando não há itens | RN-09, RF-11 | `components/EmptyCart/` | Link volta para a Home; sem botão de confirmar ativo | `feat: add empty cart state` | Concluído |
 | T-24 | `checkoutSchema` (Zod 4, mensagens com `error`; conferir API no Context7) + UT-08 | RF-08, RF-09 | `schemas/checkoutSchema.ts`, teste | Testes passam | `feat: add checkout validation schema` | Concluído |
 | T-25 | `DeliveryAddressForm` com RHF + `zodResolver` (sem API ainda) | RF-08, RF-11 | `components/DeliveryAddressForm/`, `pages/Checkout/` | Erros por campo com `aria-invalid`/`aria-describedby` | `feat: add delivery address form` | Concluído |
-| T-26 | `services/viaCep.ts` + UT-09 com fetch mockado | RN-07 | `services/viaCep.ts`, teste | Trata sucesso, não encontrado e falha | `feat: add cep lookup service` | A fazer |
+| T-26 | `services/viaCep.ts` + UT-09 com fetch mockado | RN-07 | `services/viaCep.ts`, teste | Trata sucesso, não encontrado e falha | `feat: add cep lookup service` | Concluído |
 | T-27 | `useCepLookup` (sanitiza `\D`, busca ao chegar a 8 dígitos, `setValue`, `isLoadingCep`/`cepError`, campos editáveis após erro) | RF-08, RN-07 | `hooks/useCepLookup.ts`, `components/DeliveryAddressForm/` | Testado com CEP válido, inexistente e Offline no DevTools | `feat: autofill address from cep` | A fazer |
 | T-28 | `PaymentMethodSelector` (grupo de rádio `credit`/`debit`/`money`, alvos ≥ 44 px) no formulário | RF-09 | `components/PaymentMethodSelector/` | Teclado funciona; erro se nada selecionado | `feat: add payment method selector` | A fazer |
 | T-29 | `confirmOrder`: bloqueio (RN-10), monta snapshot, despacha `CONFIRM_ORDER` (guarda pedido + esvazia), navega | RF-11, RF-12, RF-13, RN-06 | `contexts/CartContext.tsx`, `pages/Checkout/` | Pedido inválido não avança; válido vai a `/success` | `feat: confirm order and clear cart` | A fazer |
@@ -144,3 +144,4 @@
 | T-23 | 2026-11-20 | IT-02: /checkout vazio mostra EmptyCart, link "Ver cafés" → / e sem botão Confirmar | `feat: add empty cart state` |
 | T-24 | 2026-11-20 | UT-08 (6 casos): válido, CEP com/sem hífen, complemento opcional, CEP/número/UF inválidos, sem pagamento. Zod 4.6.7 com parâmetro `error` (API conferida nos tipos do pacote) | `feat: add checkout validation schema` |
 | T-25 | 2026-11-20 | IT-03: submit vazio → erros com role=alert, aria-invalid e aria-describedby; complemento opcional sem erro; foco no CEP (Chrome) | `feat: add delivery address form` |
+| T-26 | 2026-11-20 | UT-09 (6 casos, fetch mockado): sucesso normalizado, {erro:true} → not-found, rede/HTTP 500 → unavailable, CEP incompleto não chama API | `feat: add cep lookup service` |
