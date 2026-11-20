@@ -1,16 +1,14 @@
-import { Link, Outlet } from 'react-router'
+import { Outlet } from 'react-router'
+import { Header } from '../Header'
+import { LayoutContainer, Main } from './styles'
 
 export function PageLayout() {
   return (
-    <>
-      <header>
-        <nav>
-          <Link to="/">Coffee Delivery</Link> <Link to="/checkout">Carrinho</Link>
-        </nav>
-      </header>
-      <main>
+    <LayoutContainer>
+      <Header />
+      <Main>
         <Outlet />
-      </main>
-    </>
+      </Main>
+    </LayoutContainer>
   )
 }

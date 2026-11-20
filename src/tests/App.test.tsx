@@ -1,29 +1,26 @@
-import { render, screen } from '@testing-library/react'
-import { MemoryRouter } from 'react-router'
+import { screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 import App from '../App'
-
-function renderAt(path: string) {
-  return render(
-    <MemoryRouter initialEntries={[path]}>
-      <App />
-    </MemoryRouter>,
-  )
-}
+import { renderWithProviders } from './renderWithProviders'
 
 describe('App routes', () => {
   it('renders the home page at /', () => {
-    renderAt('/')
-    expect(screen.getByRole('heading', { name: 'Home' })).toBeInTheDocument()
+    renderWithProviders(<App />)
+    expect(screen.getByRole('heading', { name: /Encontre o café perfeito/ })).toBeInTheDocument()
   })
 
   it('renders the checkout page at /checkout', () => {
-    renderAt('/checkout')
+    renderWithProviders(<App />, { route: '/checkout' })
     expect(screen.getByRole('heading', { name: 'Checkout' })).toBeInTheDocument()
   })
 
   it('redirects unknown routes to the home page', () => {
-    renderAt('/rota-inexistente')
-    expect(screen.getByRole('heading', { name: 'Home' })).toBeInTheDocument()
+    renderWithProviders(<App />, { route: '/rota-inexistente' })
+    expect(screen.getByRole('heading', { name: /Encontre o café perfeito/ })).toBeInTheDocument()
+  })
+
+  it('shows a header link to the cart', () => {
+    renderWithProviders(<App />)
+    expect(screen.getByRole('link', { name: 'Ver carrinho' })).toHaveAttribute('href', '/checkout')
   })
 })
