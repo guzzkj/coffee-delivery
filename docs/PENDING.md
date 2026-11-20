@@ -39,7 +39,7 @@
 
 ## Pendências de documentação (pequenas)
 
-### P-06 — Atualizar `docs/TECH_SPEC.md` §3 e §4
+### P-06 — Atualizar `docs/TECH_SPEC.md` §3 e §4 — ✅ concluída (em `dev`)
 Arquivos criados durante a implementação que ainda não aparecem na estrutura/lista de componentes:
 - `src/contexts/CartContextValue.ts`, `ThemeContext.tsx`, `ThemeContextValue.ts`
 - `src/reducers/loadInitialCartState.ts`

@@ -55,12 +55,11 @@ Princípios:
 ```
 src/
 ├── assets/
-│   ├── brand/                 logo-light.svg, logo-dark.svg (IA)
-│   ├── coffees/               imagens dos cafés (exportadas do Figma)
-│   └── hero/                  imagem do hero
+│   └── brand/                 logo-light.svg, logo-dark.svg, logo-icon.svg (IA)
 ├── components/
 │   ├── PageLayout/            index.tsx + styles.ts
 │   ├── Header/                index.tsx + styles.ts
+│   ├── Logo/                  ícone + nome da marca (usa logo-icon.svg)
 │   ├── ThemeToggle/
 │   ├── CartBadge/
 │   ├── Hero/
@@ -69,32 +68,45 @@ src/
 │   ├── QuantityInput/
 │   ├── CartItem/
 │   ├── CartSummary/
-│   ├── EmptyCart/
+│   ├── EmptyState/            estado vazio genérico (ícone, título, link)
+│   ├── EmptyCart/             só index.tsx (usa EmptyState)
+│   ├── TextInput/             input com label, erro e "Opcional"
 │   ├── DeliveryAddressForm/
 │   ├── PaymentMethodSelector/
 │   └── OrderSuccess/
 ├── pages/
-│   ├── Home/                  index.tsx + styles.ts
-│   ├── Checkout/
-│   └── Success/
-├── contexts/                  CartContext.tsx, ThemeContext.tsx
-├── reducers/                  cartReducer.ts, cartActions.ts
+│   ├── Home/                  index.tsx
+│   ├── Checkout/              index.tsx + styles.ts
+│   └── Success/               index.tsx
+├── contexts/                  CartContext.tsx + CartContextValue.ts,
+│                              ThemeContext.tsx + ThemeContextValue.ts
+│                              (createContext separado do Provider por causa do Fast Refresh)
+├── reducers/                  cartReducer.ts, cartActions.ts, loadInitialCartState.ts
 ├── hooks/                     useCart.ts, useTheme.ts, useCepLookup.ts
 ├── services/                  viaCep.ts
 ├── data/                      coffees.ts
 ├── types/                     coffee.ts, cart.ts, order.ts
 ├── schemas/                   checkoutSchema.ts
-├── utils/                     formatCurrency.ts, cartCalculations.ts, storage.ts
+├── utils/                     formatCurrency.ts, cartCalculations.ts, storage.ts, createOrder.ts
 ├── styles/
 │   ├── themes/                light.ts, dark.ts
 │   ├── global.ts              GlobalStyle (createGlobalStyle)
+│   ├── typography.ts          escala tipográfica do Style Guide (helpers css)
+│   ├── breakpoints.ts         breakpoints em rem + atalhos de media query
 │   └── styled.d.ts            tipagem do DefaultTheme
-├── tests/                     *.test.ts(x) + setup.ts
+├── tests/                     *.test.ts(x) + setup.ts + renderWithProviders.tsx
 ├── App.tsx
 └── main.tsx
-public/                        favicon.svg (logo IA)
-docs/                          PRD_SPEC, TECH_SPEC, TASKS_SPEC, AI_USAGE, BRANDING (opcional)
+public/                        favicon.svg (logo IA), coffees/*.png, images/ (hero, ilustração de entrega)
+docs/                          PRD_SPEC, TECH_SPEC, TASKS_SPEC, AI_USAGE, BRANDING, PENDING, screenshots/
 ```
+
+Arquivos auxiliares:
+
+- `reducers/loadInitialCartState.ts` — lê o `localStorage` e só aceita itens/pedido válidos (RN-10).
+- `utils/createOrder.ts` — função pura que monta o snapshot do pedido (RN-06); `id` e data entram por parâmetro.
+- `hooks/useTheme.ts` — lê o `ThemeContext` e falha se usado fora do Provider (como `useCart`).
+- `hooks/useCepLookup.ts` — ver §7 e regra 7 do AGENTS.md.
 
 Cada componente: `index.tsx` (JSX + lógica de apresentação) e `styles.ts` (styled-components). Import: `import { CoffeeCard } from '../components/CoffeeCard'`.
 
@@ -104,16 +116,19 @@ Cada componente: `index.tsx` (JSX + lógica de apresentação) e `styles.ts` (st
 |---|---|---|---|
 | `PageLayout` | Header + `<Outlet/>` + largura máxima | — | RF-07, RF-15 |
 | `Header` | Logo, localização, ThemeToggle, botão do carrinho com `CartBadge` | — (lê `useCart`) | RF-04, RF-14, RF-16 |
+| `Logo` | Ícone + nome "Coffee Delivery" (link para a Home no Header) | — | RF-16 |
 | `ThemeToggle` | Alterna tema; `aria-label` + `aria-pressed` | — (lê `useTheme`) | RF-14 |
 | `CartBadge` | Mostra total de unidades; oculto se 0 | `count: number` | RF-04 |
 | `Hero` | Título, subtítulo, 4 benefícios, imagem | — | contexto da Home |
 | `CoffeeCatalog` | `coffees.map(c => <CoffeeCard key={c.id} …/>)` | `coffees: Coffee[]` | RF-01 |
 | `CoffeeCard` | Card do café + `QuantityInput` + botão adicionar | `coffee: Coffee` | RF-01..03 |
-| `QuantityInput` | − valor +; mínimo 1 | `value`, `onIncrement`, `onDecrement`, `min?` | RF-02, RF-05, RN-01 |
-| `CartItem` | Linha do carrinho no checkout + Remover | `item: CartItemDetailed` | RF-05 |
-| `CartSummary` | Subtotal, entrega, total + botão Confirmar | `subtotal`, `deliveryFee`, `total`, `disabled` | RF-10, RF-11 |
-| `EmptyCart` | Estado vazio do carrinho | — | RN-09 |
-| `DeliveryAddressForm` | Campos de endereço (RHF) + status do CEP | `register`, `errors`, `isLoadingCep`, `cepError` | RF-08, RN-07 |
+| `QuantityInput` | − valor +; mínimo 1 | `value`, `onIncrement`, `onDecrement`, `min?`, `label` | RF-02, RF-05, RN-01 |
+| `CartItem` | Linha do carrinho no checkout + Remover | `item: CartItemDetailed`, `onIncrement`, `onDecrement`, `onRemove` | RF-05 |
+| `CartSummary` | Subtotal, entrega, total + botão Confirmar | `subtotalInCents`, `deliveryFeeInCents`, `totalInCents`, `disabled?` | RF-10, RF-11 |
+| `EmptyState` | Estado vazio genérico: ícone, título, descrição e link (carrinho vazio e sucesso sem pedido) | `icon`, `title`, `description`, `linkLabel`, `linkTo` | RN-09 |
+| `EmptyCart` | Estado vazio do carrinho (`EmptyState` com textos fixos) | — | RN-09 |
+| `TextInput` | Input com `label`, mensagem de erro (`aria-invalid` + `aria-describedby`) e marcador "Opcional" | `id`, `label`, `error?`, `optional?` + props de `<input>` | RF-08 |
+| `DeliveryAddressForm` | Campos de endereço (RHF) + status do CEP | `register`, `errors`, `isLoadingCep`, `cepError`, `cepFound` | RF-08, RN-07 |
 | `PaymentMethodSelector` | Grupo de rádio (crédito/débito/dinheiro) | `register`, `error` | RF-09 |
 | `OrderSuccess` | Resumo do pedido confirmado | `order: Order` | RF-12, RF-13 |
 
