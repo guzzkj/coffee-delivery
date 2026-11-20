@@ -94,7 +94,7 @@
 |---|---|---|---|---|---|---|
 | T-36 | Revisão de acessibilidade (foco, labels, aria-live, teclado, reduced motion) | RNF a11y | vários | Fluxo completo só com teclado | `fix: improve accessibility across pages` | Concluído |
 | T-37 | Testes de fluxo IT-01..IT-05 (Testing Library) | RF-03..RF-14 | `src/tests/*` | `npm run test -- --run` verde | `test: cover main user flows` | Concluído |
-| T-38 | Validação Playwright (desktop/mobile/dark) + prints em `docs/screenshots` | RF-07, RF-15 | `docs/screenshots/*` | Prints Home, Checkout, Sucesso, Dark (desktop+mobile) | `docs: add app screenshots` | A fazer |
+| T-38 | Validação Playwright (desktop/mobile/dark) + prints em `docs/screenshots` | RF-07, RF-15 | `docs/screenshots/*` | Prints Home, Checkout, Sucesso, Dark (desktop+mobile) | `docs: add app screenshots` | Concluído |
 
 ## Fase 12 — Entrega (`dev` → `main`)
 
@@ -156,3 +156,4 @@
 | T-35 | 2026-11-20 | Chrome (iframes 320/390/768): checkout em 1 coluna abaixo de 1024px, grade de endereço adaptada, pagamento empilhado, item do carrinho sem vazamento; sucesso empilha card + ilustração; scrollWidth sem overflow | `style: make checkout and success responsive` |
 | T-36 | 2026-11-20 | Vitest a11y: skip link 1º Tab, aria-live ao adicionar, título + foco no main ao navegar. Chrome só teclado: skip link → +/adicionar → carrinho → submit vazio foca CEP inválido → CEP real foca Número → radio com espaço → confirmar → sucesso com foco no main | `fix: improve accessibility across pages` |
 | T-37 | 2026-11-20 | 56 testes / 21 arquivos verdes. IT-01 cartBadge, IT-02 App (carrinho vazio), IT-03 addressForm, IT-04 fullFlow (Home→checkout→CEP→sucesso→reload), IT-05 theme | `test: cover main user flows` |
+| T-38 | 2026-11-20 | 12 prints em docs/screenshots (Home/Checkout/Sucesso × claro/escuro × 1440×900/390×844) via Chrome headless + DevTools Protocol (Playwright MCP indisponível na sessão); validação interativa feita no Chrome nas tasks anteriores | `docs: add app screenshots` |
